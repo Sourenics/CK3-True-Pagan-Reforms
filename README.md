@@ -7,6 +7,7 @@ A Crusader Kings III mod that makes AI pagan reformations less predictable. When
 - **Game version:** 1.20.x
 - **Mod version:** 1.1.0
 - **Author:** [Sourenics](https://github.com/Sourenics)
+- **Steam Workshop:** [True Pagan Reforms](https://steamcommunity.com/sharedfiles/filedetails/?id=3817742251)
 
 ## Features
 

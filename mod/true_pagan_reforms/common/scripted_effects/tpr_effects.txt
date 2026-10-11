@@ -1,7 +1,7 @@
 ﻿# True Pagan Reforms - scripted effects.
 
 # Faith scope (the new, reformed faith), from tpr_on_faith_created.
-# Picks who shaped the reform, and if an AI did, swaps some of the reformed rite's tenets for ones that fit them.
+# Picks who shaped the reform, and if an AI did, swaps some of the reformed rite's tenets and doctrines for ones that fit them.
 tpr_vary_reformed_faith_effect = {
 	if = {
 		limit = { exists = scope:founder }
@@ -25,7 +25,8 @@ tpr_vary_reformed_faith_effect = {
 }
 
 # Needs scope:tpr_rite and scope:tpr_founder; scope:tpr_old_rite is optional.
-# Makes 1 or 2 swaps, following the game rule. A reformed rite has 3 tenets, so at least 1 always stays.
+# Makes 1 or 2 tenet swaps, following the tenet game rule (a reformed rite has 3 tenets, so at least 1 always stays),
+# then changes doctrines following the doctrine game rule.
 tpr_vary_rite_effect = {
 	if = {
 		limit = { has_game_rule = tpr_variation_strong }
@@ -41,6 +42,69 @@ tpr_vary_rite_effect = {
 		random = {
 			chance = 50
 			tpr_swap_one_tenet_effect = yes
+		}
+	}
+	# Doctrines go after tenets, so a tenet just added (Carnal Exaltation) can open a doctrine (virtuous deviancy).
+	tpr_vary_doctrines_effect = yes
+}
+
+# Needs scope:tpr_rite and scope:tpr_founder.
+# Moves 0 to 4 doctrines one step, following the doctrine game rule. Each group changes at most once.
+tpr_vary_doctrines_effect = {
+	if = {
+		limit = { has_game_rule = tpr_doctrine_variation_light }
+		tpr_change_one_doctrine_effect = yes
+	}
+	else_if = {
+		limit = { has_game_rule = tpr_doctrine_variation_strong }
+		tpr_change_one_doctrine_effect = yes
+		tpr_change_one_doctrine_effect = yes
+		tpr_change_one_doctrine_effect = yes
+		random = {
+			chance = 50
+			tpr_change_one_doctrine_effect = yes
+		}
+	}
+	# Moderate, also when the rule did not exist yet in the save.
+	else_if = {
+		limit = { NOT = { has_game_rule = tpr_doctrine_variation_none } }
+		tpr_change_one_doctrine_effect = yes
+		tpr_change_one_doctrine_effect = yes
+	}
+}
+
+# Needs scope:tpr_rite and scope:tpr_founder.
+# Moves one doctrine to a neighbouring option, preferring those that fit the founder. Does nothing if no doctrine qualifies.
+tpr_change_one_doctrine_effect = {
+	clear_saved_scope = tpr_doctrine_to_add
+	random_doctrine = {
+		limit = { tpr_can_change_to_doctrine_trigger = yes }
+		weight = {
+			base = 10
+			modifier = {
+				add = tpr_doctrine_affinity_value
+			}
+		}
+		save_scope_as = tpr_doctrine_to_add
+	}
+	if = {
+		limit = { exists = scope:tpr_doctrine_to_add }
+		scope:tpr_rite = { change_rite_doctrine = scope:tpr_doctrine_to_add }
+		# Remember it, so the same group is not changed twice.
+		if = {
+			limit = { NOT = { exists = scope:tpr_doctrine_1 } }
+			scope:tpr_doctrine_to_add = { save_scope_as = tpr_doctrine_1 }
+		}
+		else_if = {
+			limit = { NOT = { exists = scope:tpr_doctrine_2 } }
+			scope:tpr_doctrine_to_add = { save_scope_as = tpr_doctrine_2 }
+		}
+		else_if = {
+			limit = { NOT = { exists = scope:tpr_doctrine_3 } }
+			scope:tpr_doctrine_to_add = { save_scope_as = tpr_doctrine_3 }
+		}
+		else = {
+			scope:tpr_doctrine_to_add = { save_scope_as = tpr_doctrine_4 }
 		}
 	}
 }

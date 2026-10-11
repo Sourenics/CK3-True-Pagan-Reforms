@@ -77,6 +77,11 @@ tpr_tenet_has_no_conflict_trigger = {
 			NOT = { rite_has_tenet = tenet_asceticism }
 		}
 	}
+	# The faith editor only lets Adaptability go with pluralism.
+	trigger_if = {
+		limit = { this = tenet:tenet_adaptive }
+		scope:tpr_rite = { rite_has_doctrine = doctrine_pluralism_pluralistic }
+	}
 	trigger_if = {
 		limit = { this = tenet:tenet_asceticism }
 		scope:tpr_rite = {
@@ -103,6 +108,11 @@ tpr_can_remove_tenet_trigger = {
 	NOR = {
 		scope:tpr_added_1 ?= this
 		scope:tpr_added_2 ?= this
+	}
+	# Virtuous deviancy needs Carnal Exaltation.
+	NAND = {
+		this = tenet:tenet_carnal_exaltation
+		scope:tpr_rite = { rite_has_doctrine = doctrine_deviancy_virtuous }
 	}
 	trigger_if = {
 		limit = { tpr_tenet_is_inherited_trigger = yes }

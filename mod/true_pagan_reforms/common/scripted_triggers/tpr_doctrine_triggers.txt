@@ -1,0 +1,598 @@
+﻿# True Pagan Reforms - doctrine triggers. Generated; keep the doctrine lists in index order.
+
+# Doctrine scope. Needs scope:tpr_rite. The doctrine is one step away from the rite's current doctrine
+# of its group (any other doctrine for groups without an order), and the rite does not have it yet.
+tpr_doctrine_is_one_step_trigger = {
+	OR = {
+		AND = {
+			this = doctrine:doctrine_gender_male_dominated
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_gender_equal
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_gender_equal
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_gender_male_dominated rite_has_doctrine = doctrine_gender_female_dominated }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_gender_female_dominated
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_gender_equal
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_pluralism_fundamentalist
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_pluralism_righteous
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_pluralism_righteous
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_pluralism_fundamentalist rite_has_doctrine = doctrine_pluralism_pluralistic }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_pluralism_pluralistic
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_pluralism_righteous
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_theocracy_temporal
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_theocracy_lay_clergy
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_theocracy_lay_clergy
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_theocracy_temporal
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_pilgrimage_forbidden
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_pilgrimage_encouraged
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_pilgrimage_encouraged
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_pilgrimage_forbidden rite_has_doctrine = doctrine_pilgrimage_local_rites }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_pilgrimage_local_rites
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_pilgrimage_encouraged rite_has_doctrine = doctrine_pilgrimage_mandatory }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_pilgrimage_mandatory
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_pilgrimage_local_rites
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_clerical_function_taxation
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_clerical_function_alms_and_pacification rite_has_doctrine = doctrine_clerical_function_recruitment }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_clerical_function_alms_and_pacification
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_clerical_function_taxation rite_has_doctrine = doctrine_clerical_function_recruitment }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_clerical_function_recruitment
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_clerical_function_taxation rite_has_doctrine = doctrine_clerical_function_alms_and_pacification }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_clerical_gender_male_only
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_clerical_gender_either
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_clerical_gender_either
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_clerical_gender_male_only rite_has_doctrine = doctrine_clerical_gender_female_only }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_clerical_gender_female_only
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_clerical_gender_either
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_clerical_marriage_allowed
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_clerical_marriage_disallowed
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_clerical_marriage_disallowed
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_clerical_marriage_allowed
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_clerical_succession_temporal_appointment
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_clerical_succession_spiritual_appointment rite_has_doctrine = doctrine_clerical_succession_temporal_fixed_appointment rite_has_doctrine = doctrine_clerical_succession_spiritual_fixed_appointment }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_clerical_succession_spiritual_appointment
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_clerical_succession_temporal_appointment rite_has_doctrine = doctrine_clerical_succession_temporal_fixed_appointment rite_has_doctrine = doctrine_clerical_succession_spiritual_fixed_appointment }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_clerical_succession_temporal_fixed_appointment
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_clerical_succession_temporal_appointment rite_has_doctrine = doctrine_clerical_succession_spiritual_appointment rite_has_doctrine = doctrine_clerical_succession_spiritual_fixed_appointment }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_clerical_succession_spiritual_fixed_appointment
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_clerical_succession_temporal_appointment rite_has_doctrine = doctrine_clerical_succession_spiritual_appointment rite_has_doctrine = doctrine_clerical_succession_temporal_fixed_appointment }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_monogamy
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_polygamy
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_polygamy
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_monogamy rite_has_doctrine = doctrine_concubines }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_concubines
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_polygamy
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_divorce_disallowed
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_divorce_approval
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_divorce_approval
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_divorce_disallowed rite_has_doctrine = doctrine_divorce_allowed }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_divorce_allowed
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_divorce_approval
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_bastardry_none
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_bastardry_legitimization
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_bastardry_legitimization
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_bastardry_none rite_has_doctrine = doctrine_bastardry_all }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_bastardry_all
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_bastardry_legitimization
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_consanguinity_dynastic
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_consanguinity_restricted
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_consanguinity_restricted
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_consanguinity_dynastic rite_has_doctrine = doctrine_consanguinity_cousins }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_consanguinity_cousins
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_consanguinity_restricted rite_has_doctrine = doctrine_consanguinity_aunt_nephew_and_uncle_niece }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_consanguinity_aunt_nephew_and_uncle_niece
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_consanguinity_cousins rite_has_doctrine = doctrine_consanguinity_unrestricted }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_consanguinity_unrestricted
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_consanguinity_aunt_nephew_and_uncle_niece
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_homosexuality_crime
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_homosexuality_shunned
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_homosexuality_shunned
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_homosexuality_crime rite_has_doctrine = doctrine_homosexuality_accepted }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_homosexuality_accepted
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_homosexuality_shunned
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_deviancy_crime
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_deviancy_shunned
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_deviancy_shunned
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_deviancy_crime rite_has_doctrine = doctrine_deviancy_accepted }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_deviancy_accepted
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_deviancy_shunned rite_has_doctrine = doctrine_deviancy_virtuous }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_deviancy_virtuous
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_deviancy_accepted
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_adultery_men_crime
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_adultery_men_shunned
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_adultery_men_shunned
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_adultery_men_crime rite_has_doctrine = doctrine_adultery_men_accepted }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_adultery_men_accepted
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_adultery_men_shunned
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_adultery_women_crime
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_adultery_women_shunned
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_adultery_women_shunned
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_adultery_women_crime rite_has_doctrine = doctrine_adultery_women_accepted }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_adultery_women_accepted
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_adultery_women_shunned
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_kinslaying_any_dynasty_member_crime
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_kinslaying_extended_family_crime
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_kinslaying_extended_family_crime
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_kinslaying_any_dynasty_member_crime rite_has_doctrine = doctrine_kinslaying_close_kin_crime }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_kinslaying_close_kin_crime
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_kinslaying_extended_family_crime rite_has_doctrine = doctrine_kinslaying_shunned }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_kinslaying_shunned
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_kinslaying_close_kin_crime rite_has_doctrine = doctrine_kinslaying_accepted }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_kinslaying_accepted
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_kinslaying_shunned
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_witchcraft_crime
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_witchcraft_shunned
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_witchcraft_shunned
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_witchcraft_crime rite_has_doctrine = doctrine_witchcraft_accepted }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_witchcraft_accepted
+			scope:tpr_rite = {
+				OR = { rite_has_doctrine = doctrine_witchcraft_shunned rite_has_doctrine = doctrine_witchcraft_virtuous }
+			}
+		}
+		AND = {
+			this = doctrine:doctrine_witchcraft_virtuous
+			scope:tpr_rite = {
+				rite_has_doctrine = doctrine_witchcraft_accepted
+			}
+		}
+	}
+}
+
+# Doctrine scope. A doctrine of a group this reform already changed (scope:tpr_doctrine_1 to _4).
+tpr_doctrine_group_already_changed_trigger = {
+	OR = {
+		AND = {
+			OR = { this = doctrine:doctrine_gender_male_dominated this = doctrine:doctrine_gender_equal this = doctrine:doctrine_gender_female_dominated }
+			OR = {
+				scope:tpr_doctrine_1 ?= { OR = { this = doctrine:doctrine_gender_male_dominated this = doctrine:doctrine_gender_equal this = doctrine:doctrine_gender_female_dominated } }
+				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_gender_male_dominated this = doctrine:doctrine_gender_equal this = doctrine:doctrine_gender_female_dominated } }
+				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_gender_male_dominated this = doctrine:doctrine_gender_equal this = doctrine:doctrine_gender_female_dominated } }
+				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_gender_male_dominated this = doctrine:doctrine_gender_equal this = doctrine:doctrine_gender_female_dominated } }
+			}
+		}
+		AND = {
+			OR = { this = doctrine:doctrine_pluralism_fundamentalist this = doctrine:doctrine_pluralism_righteous this = doctrine:doctrine_pluralism_pluralistic }
+			OR = {
+				scope:tpr_doctrine_1 ?= { OR = { this = doctrine:doctrine_pluralism_fundamentalist this = doctrine:doctrine_pluralism_righteous this = doctrine:doctrine_pluralism_pluralistic } }
+				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_pluralism_fundamentalist this = doctrine:doctrine_pluralism_righteous this = doctrine:doctrine_pluralism_pluralistic } }
+				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_pluralism_fundamentalist this = doctrine:doctrine_pluralism_righteous this = doctrine:doctrine_pluralism_pluralistic } }
+				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_pluralism_fundamentalist this = doctrine:doctrine_pluralism_righteous this = doctrine:doctrine_pluralism_pluralistic } }
+			}
+		}
+		AND = {
+			OR = { this = doctrine:doctrine_theocracy_temporal this = doctrine:doctrine_theocracy_lay_clergy }
+			OR = {
+				scope:tpr_doctrine_1 ?= { OR = { this = doctrine:doctrine_theocracy_temporal this = doctrine:doctrine_theocracy_lay_clergy } }
+				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_theocracy_temporal this = doctrine:doctrine_theocracy_lay_clergy } }
+				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_theocracy_temporal this = doctrine:doctrine_theocracy_lay_clergy } }
+				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_theocracy_temporal this = doctrine:doctrine_theocracy_lay_clergy } }
+			}
+		}
+		AND = {
+			OR = { this = doctrine:doctrine_pilgrimage_forbidden this = doctrine:doctrine_pilgrimage_encouraged this = doctrine:doctrine_pilgrimage_local_rites this = doctrine:doctrine_pilgrimage_mandatory }
+			OR = {
+				scope:tpr_doctrine_1 ?= { OR = { this = doctrine:doctrine_pilgrimage_forbidden this = doctrine:doctrine_pilgrimage_encouraged this = doctrine:doctrine_pilgrimage_local_rites this = doctrine:doctrine_pilgrimage_mandatory } }
+				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_pilgrimage_forbidden this = doctrine:doctrine_pilgrimage_encouraged this = doctrine:doctrine_pilgrimage_local_rites this = doctrine:doctrine_pilgrimage_mandatory } }
+				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_pilgrimage_forbidden this = doctrine:doctrine_pilgrimage_encouraged this = doctrine:doctrine_pilgrimage_local_rites this = doctrine:doctrine_pilgrimage_mandatory } }
+				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_pilgrimage_forbidden this = doctrine:doctrine_pilgrimage_encouraged this = doctrine:doctrine_pilgrimage_local_rites this = doctrine:doctrine_pilgrimage_mandatory } }
+			}
+		}
+		AND = {
+			OR = { this = doctrine:doctrine_clerical_function_taxation this = doctrine:doctrine_clerical_function_alms_and_pacification this = doctrine:doctrine_clerical_function_recruitment }
+			OR = {
+				scope:tpr_doctrine_1 ?= { OR = { this = doctrine:doctrine_clerical_function_taxation this = doctrine:doctrine_clerical_function_alms_and_pacification this = doctrine:doctrine_clerical_function_recruitment } }
+				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_clerical_function_taxation this = doctrine:doctrine_clerical_function_alms_and_pacification this = doctrine:doctrine_clerical_function_recruitment } }
+				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_clerical_function_taxation this = doctrine:doctrine_clerical_function_alms_and_pacification this = doctrine:doctrine_clerical_function_recruitment } }
+				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_clerical_function_taxation this = doctrine:doctrine_clerical_function_alms_and_pacification this = doctrine:doctrine_clerical_function_recruitment } }
+			}
+		}
+		AND = {
+			OR = { this = doctrine:doctrine_clerical_gender_male_only this = doctrine:doctrine_clerical_gender_either this = doctrine:doctrine_clerical_gender_female_only }
+			OR = {
+				scope:tpr_doctrine_1 ?= { OR = { this = doctrine:doctrine_clerical_gender_male_only this = doctrine:doctrine_clerical_gender_either this = doctrine:doctrine_clerical_gender_female_only } }
+				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_clerical_gender_male_only this = doctrine:doctrine_clerical_gender_either this = doctrine:doctrine_clerical_gender_female_only } }
+				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_clerical_gender_male_only this = doctrine:doctrine_clerical_gender_either this = doctrine:doctrine_clerical_gender_female_only } }
+				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_clerical_gender_male_only this = doctrine:doctrine_clerical_gender_either this = doctrine:doctrine_clerical_gender_female_only } }
+			}
+		}
+		AND = {
+			OR = { this = doctrine:doctrine_clerical_marriage_allowed this = doctrine:doctrine_clerical_marriage_disallowed }
+			OR = {
+				scope:tpr_doctrine_1 ?= { OR = { this = doctrine:doctrine_clerical_marriage_allowed this = doctrine:doctrine_clerical_marriage_disallowed } }
+				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_clerical_marriage_allowed this = doctrine:doctrine_clerical_marriage_disallowed } }
+				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_clerical_marriage_allowed this = doctrine:doctrine_clerical_marriage_disallowed } }
+				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_clerical_marriage_allowed this = doctrine:doctrine_clerical_marriage_disallowed } }
+			}
+		}
+		AND = {
+			OR = { this = doctrine:doctrine_clerical_succession_temporal_appointment this = doctrine:doctrine_clerical_succession_spiritual_appointment this = doctrine:doctrine_clerical_succession_temporal_fixed_appointment this = doctrine:doctrine_clerical_succession_spiritual_fixed_appointment }
+			OR = {
+				scope:tpr_doctrine_1 ?= { OR = { this = doctrine:doctrine_clerical_succession_temporal_appointment this = doctrine:doctrine_clerical_succession_spiritual_appointment this = doctrine:doctrine_clerical_succession_temporal_fixed_appointment this = doctrine:doctrine_clerical_succession_spiritual_fixed_appointment } }
+				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_clerical_succession_temporal_appointment this = doctrine:doctrine_clerical_succession_spiritual_appointment this = doctrine:doctrine_clerical_succession_temporal_fixed_appointment this = doctrine:doctrine_clerical_succession_spiritual_fixed_appointment } }
+				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_clerical_succession_temporal_appointment this = doctrine:doctrine_clerical_succession_spiritual_appointment this = doctrine:doctrine_clerical_succession_temporal_fixed_appointment this = doctrine:doctrine_clerical_succession_spiritual_fixed_appointment } }
+				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_clerical_succession_temporal_appointment this = doctrine:doctrine_clerical_succession_spiritual_appointment this = doctrine:doctrine_clerical_succession_temporal_fixed_appointment this = doctrine:doctrine_clerical_succession_spiritual_fixed_appointment } }
+			}
+		}
+		AND = {
+			OR = { this = doctrine:doctrine_monogamy this = doctrine:doctrine_polygamy this = doctrine:doctrine_concubines }
+			OR = {
+				scope:tpr_doctrine_1 ?= { OR = { this = doctrine:doctrine_monogamy this = doctrine:doctrine_polygamy this = doctrine:doctrine_concubines } }
+				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_monogamy this = doctrine:doctrine_polygamy this = doctrine:doctrine_concubines } }
+				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_monogamy this = doctrine:doctrine_polygamy this = doctrine:doctrine_concubines } }
+				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_monogamy this = doctrine:doctrine_polygamy this = doctrine:doctrine_concubines } }
+			}
+		}
+		AND = {
+			OR = { this = doctrine:doctrine_divorce_disallowed this = doctrine:doctrine_divorce_approval this = doctrine:doctrine_divorce_allowed }
+			OR = {
+				scope:tpr_doctrine_1 ?= { OR = { this = doctrine:doctrine_divorce_disallowed this = doctrine:doctrine_divorce_approval this = doctrine:doctrine_divorce_allowed } }
+				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_divorce_disallowed this = doctrine:doctrine_divorce_approval this = doctrine:doctrine_divorce_allowed } }
+				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_divorce_disallowed this = doctrine:doctrine_divorce_approval this = doctrine:doctrine_divorce_allowed } }
+				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_divorce_disallowed this = doctrine:doctrine_divorce_approval this = doctrine:doctrine_divorce_allowed } }
+			}
+		}
+		AND = {
+			OR = { this = doctrine:doctrine_bastardry_none this = doctrine:doctrine_bastardry_legitimization this = doctrine:doctrine_bastardry_all }
+			OR = {
+				scope:tpr_doctrine_1 ?= { OR = { this = doctrine:doctrine_bastardry_none this = doctrine:doctrine_bastardry_legitimization this = doctrine:doctrine_bastardry_all } }
+				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_bastardry_none this = doctrine:doctrine_bastardry_legitimization this = doctrine:doctrine_bastardry_all } }
+				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_bastardry_none this = doctrine:doctrine_bastardry_legitimization this = doctrine:doctrine_bastardry_all } }
+				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_bastardry_none this = doctrine:doctrine_bastardry_legitimization this = doctrine:doctrine_bastardry_all } }
+			}
+		}
+		AND = {
+			OR = { this = doctrine:doctrine_consanguinity_dynastic this = doctrine:doctrine_consanguinity_restricted this = doctrine:doctrine_consanguinity_cousins this = doctrine:doctrine_consanguinity_aunt_nephew_and_uncle_niece this = doctrine:doctrine_consanguinity_unrestricted }
+			OR = {
+				scope:tpr_doctrine_1 ?= { OR = { this = doctrine:doctrine_consanguinity_dynastic this = doctrine:doctrine_consanguinity_restricted this = doctrine:doctrine_consanguinity_cousins this = doctrine:doctrine_consanguinity_aunt_nephew_and_uncle_niece this = doctrine:doctrine_consanguinity_unrestricted } }
+				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_consanguinity_dynastic this = doctrine:doctrine_consanguinity_restricted this = doctrine:doctrine_consanguinity_cousins this = doctrine:doctrine_consanguinity_aunt_nephew_and_uncle_niece this = doctrine:doctrine_consanguinity_unrestricted } }
+				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_consanguinity_dynastic this = doctrine:doctrine_consanguinity_restricted this = doctrine:doctrine_consanguinity_cousins this = doctrine:doctrine_consanguinity_aunt_nephew_and_uncle_niece this = doctrine:doctrine_consanguinity_unrestricted } }
+				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_consanguinity_dynastic this = doctrine:doctrine_consanguinity_restricted this = doctrine:doctrine_consanguinity_cousins this = doctrine:doctrine_consanguinity_aunt_nephew_and_uncle_niece this = doctrine:doctrine_consanguinity_unrestricted } }
+			}
+		}
+		AND = {
+			OR = { this = doctrine:doctrine_homosexuality_crime this = doctrine:doctrine_homosexuality_shunned this = doctrine:doctrine_homosexuality_accepted }
+			OR = {
+				scope:tpr_doctrine_1 ?= { OR = { this = doctrine:doctrine_homosexuality_crime this = doctrine:doctrine_homosexuality_shunned this = doctrine:doctrine_homosexuality_accepted } }
+				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_homosexuality_crime this = doctrine:doctrine_homosexuality_shunned this = doctrine:doctrine_homosexuality_accepted } }
+				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_homosexuality_crime this = doctrine:doctrine_homosexuality_shunned this = doctrine:doctrine_homosexuality_accepted } }
+				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_homosexuality_crime this = doctrine:doctrine_homosexuality_shunned this = doctrine:doctrine_homosexuality_accepted } }
+			}
+		}
+		AND = {
+			OR = { this = doctrine:doctrine_deviancy_crime this = doctrine:doctrine_deviancy_shunned this = doctrine:doctrine_deviancy_accepted this = doctrine:doctrine_deviancy_virtuous }
+			OR = {
+				scope:tpr_doctrine_1 ?= { OR = { this = doctrine:doctrine_deviancy_crime this = doctrine:doctrine_deviancy_shunned this = doctrine:doctrine_deviancy_accepted this = doctrine:doctrine_deviancy_virtuous } }
+				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_deviancy_crime this = doctrine:doctrine_deviancy_shunned this = doctrine:doctrine_deviancy_accepted this = doctrine:doctrine_deviancy_virtuous } }
+				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_deviancy_crime this = doctrine:doctrine_deviancy_shunned this = doctrine:doctrine_deviancy_accepted this = doctrine:doctrine_deviancy_virtuous } }
+				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_deviancy_crime this = doctrine:doctrine_deviancy_shunned this = doctrine:doctrine_deviancy_accepted this = doctrine:doctrine_deviancy_virtuous } }
+			}
+		}
+		AND = {
+			OR = { this = doctrine:doctrine_adultery_men_crime this = doctrine:doctrine_adultery_men_shunned this = doctrine:doctrine_adultery_men_accepted }
+			OR = {
+				scope:tpr_doctrine_1 ?= { OR = { this = doctrine:doctrine_adultery_men_crime this = doctrine:doctrine_adultery_men_shunned this = doctrine:doctrine_adultery_men_accepted } }
+				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_adultery_men_crime this = doctrine:doctrine_adultery_men_shunned this = doctrine:doctrine_adultery_men_accepted } }
+				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_adultery_men_crime this = doctrine:doctrine_adultery_men_shunned this = doctrine:doctrine_adultery_men_accepted } }
+				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_adultery_men_crime this = doctrine:doctrine_adultery_men_shunned this = doctrine:doctrine_adultery_men_accepted } }
+			}
+		}
+		AND = {
+			OR = { this = doctrine:doctrine_adultery_women_crime this = doctrine:doctrine_adultery_women_shunned this = doctrine:doctrine_adultery_women_accepted }
+			OR = {
+				scope:tpr_doctrine_1 ?= { OR = { this = doctrine:doctrine_adultery_women_crime this = doctrine:doctrine_adultery_women_shunned this = doctrine:doctrine_adultery_women_accepted } }
+				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_adultery_women_crime this = doctrine:doctrine_adultery_women_shunned this = doctrine:doctrine_adultery_women_accepted } }
+				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_adultery_women_crime this = doctrine:doctrine_adultery_women_shunned this = doctrine:doctrine_adultery_women_accepted } }
+				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_adultery_women_crime this = doctrine:doctrine_adultery_women_shunned this = doctrine:doctrine_adultery_women_accepted } }
+			}
+		}
+		AND = {
+			OR = { this = doctrine:doctrine_kinslaying_any_dynasty_member_crime this = doctrine:doctrine_kinslaying_extended_family_crime this = doctrine:doctrine_kinslaying_close_kin_crime this = doctrine:doctrine_kinslaying_shunned this = doctrine:doctrine_kinslaying_accepted }
+			OR = {
+				scope:tpr_doctrine_1 ?= { OR = { this = doctrine:doctrine_kinslaying_any_dynasty_member_crime this = doctrine:doctrine_kinslaying_extended_family_crime this = doctrine:doctrine_kinslaying_close_kin_crime this = doctrine:doctrine_kinslaying_shunned this = doctrine:doctrine_kinslaying_accepted } }
+				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_kinslaying_any_dynasty_member_crime this = doctrine:doctrine_kinslaying_extended_family_crime this = doctrine:doctrine_kinslaying_close_kin_crime this = doctrine:doctrine_kinslaying_shunned this = doctrine:doctrine_kinslaying_accepted } }
+				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_kinslaying_any_dynasty_member_crime this = doctrine:doctrine_kinslaying_extended_family_crime this = doctrine:doctrine_kinslaying_close_kin_crime this = doctrine:doctrine_kinslaying_shunned this = doctrine:doctrine_kinslaying_accepted } }
+				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_kinslaying_any_dynasty_member_crime this = doctrine:doctrine_kinslaying_extended_family_crime this = doctrine:doctrine_kinslaying_close_kin_crime this = doctrine:doctrine_kinslaying_shunned this = doctrine:doctrine_kinslaying_accepted } }
+			}
+		}
+		AND = {
+			OR = { this = doctrine:doctrine_witchcraft_crime this = doctrine:doctrine_witchcraft_shunned this = doctrine:doctrine_witchcraft_accepted this = doctrine:doctrine_witchcraft_virtuous }
+			OR = {
+				scope:tpr_doctrine_1 ?= { OR = { this = doctrine:doctrine_witchcraft_crime this = doctrine:doctrine_witchcraft_shunned this = doctrine:doctrine_witchcraft_accepted this = doctrine:doctrine_witchcraft_virtuous } }
+				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_witchcraft_crime this = doctrine:doctrine_witchcraft_shunned this = doctrine:doctrine_witchcraft_accepted this = doctrine:doctrine_witchcraft_virtuous } }
+				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_witchcraft_crime this = doctrine:doctrine_witchcraft_shunned this = doctrine:doctrine_witchcraft_accepted this = doctrine:doctrine_witchcraft_virtuous } }
+				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_witchcraft_crime this = doctrine:doctrine_witchcraft_shunned this = doctrine:doctrine_witchcraft_accepted this = doctrine:doctrine_witchcraft_virtuous } }
+			}
+		}
+	}
+}
+
+# Doctrine scope. Needs scope:tpr_rite. Conditions the faith editor checks for these doctrines,
+# written out here because the game only checks some of them while a faith is being edited.
+# Not offered at all: the Hajj (Islam only) and conditional clerical succession (cannot be picked anew).
+tpr_doctrine_is_allowed_trigger = {
+	trigger_if = {
+		limit = { this = doctrine:doctrine_gender_male_dominated }
+		NOT = { has_game_rule = full_gender_equality }
+		NAND = {
+			exists = scope:tpr_rite.faith.religious_head
+			scope:tpr_rite.faith.religious_head.culture = { has_cultural_parameter = female_only_inheritance }
+		}
+	}
+	trigger_if = {
+		limit = { this = doctrine:doctrine_gender_female_dominated }
+		NOT = { has_game_rule = full_gender_equality }
+		NAND = {
+			exists = scope:tpr_rite.faith.religious_head
+			scope:tpr_rite.faith.religious_head.culture = { has_cultural_parameter = male_only_inheritance }
+		}
+	}
+	trigger_if = {
+		limit = { this = doctrine:doctrine_pluralism_pluralistic }
+		scope:tpr_rite = { NOT = { rite_has_tenet = tenet_pentarchy } }
+	}
+	trigger_if = {
+		limit = {
+			OR = {
+				this = doctrine:doctrine_theocracy_temporal
+				this = doctrine:doctrine_clerical_succession_spiritual_appointment
+				this = doctrine:doctrine_clerical_succession_spiritual_fixed_appointment
+			}
+		}
+		scope:tpr_rite = { NOT = { rite_has_doctrine = doctrine_temporal_head } }
+	}
+	trigger_if = {
+		limit = { this = doctrine:doctrine_pilgrimage_mandatory }
+		NOT = { scope:tpr_rite.faith = { religion_tag = islam_religion } }
+	}
+	# Adaptability needs pluralism.
+	trigger_if = {
+		limit = {
+			OR = {
+				this = doctrine:doctrine_pluralism_fundamentalist
+				this = doctrine:doctrine_pluralism_righteous
+			}
+		}
+		scope:tpr_rite = { NOT = { rite_has_tenet = tenet_adaptive } }
+	}
+	# Deviancy can only become a virtue in a faith that exalts the flesh.
+	trigger_if = {
+		limit = { this = doctrine:doctrine_deviancy_virtuous }
+		scope:tpr_rite = { rite_has_tenet = tenet_carnal_exaltation }
+	}
+}
+
+# Doctrine scope. Needs scope:tpr_rite. The doctrine can be the next change of this reform.
+tpr_can_change_to_doctrine_trigger = {
+	tpr_doctrine_is_one_step_trigger = yes
+	NOT = { tpr_doctrine_group_already_changed_trigger = yes }
+	tpr_doctrine_is_allowed_trigger = yes
+}

@@ -1,4 +1,4 @@
-# True Pagan Reforms - scripted triggers.
+﻿# True Pagan Reforms - scripted triggers.
 
 # Faith scope (the new faith), from on_faith_created.
 # A reformation: the old faith is unreformed, and the new faith did not come from a rite diverging too far.

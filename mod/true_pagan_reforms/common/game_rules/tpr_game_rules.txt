@@ -1,4 +1,4 @@
-# True Pagan Reforms - game rule.
+﻿# True Pagan Reforms - game rule.
 # How many tenets of an AI pagan reform are swapped for ones that fit its founder.
 tpr_variation = {
 	categories = { flavor }

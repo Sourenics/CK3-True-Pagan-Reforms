@@ -1,4 +1,4 @@
-# True Pagan Reforms - on_actions.
+﻿# True Pagan Reforms - on_actions.
 # Only an on_actions list is appended to the vanilla on_action: lists merge with vanilla's, an effect block here would replace it.
 
 # Code on_action. Root is the new faith; scope:old_faith is the faith it came from; scope:founder may be absent.

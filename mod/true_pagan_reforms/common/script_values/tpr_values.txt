@@ -1,4 +1,4 @@
-# True Pagan Reforms - script values.
+﻿# True Pagan Reforms - script values.
 
 # Tenet scope. Needs scope:tpr_founder (a character).
 # How well the tenet fits the founder's personality, lifestyle and education. 0 means no particular fit.

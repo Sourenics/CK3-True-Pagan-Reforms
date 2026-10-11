@@ -15,27 +15,27 @@ A Crusader Kings III mod that makes AI pagan reformations less predictable. When
 - **Kinship with the old faith.** If the reformed faith kept tenets from the unreformed one, at least one of them is always kept.
 - **Shaped by the reformer.** The new tenets are drawn at random, weighted by the reformer's personality traits, lifestyle traits and education. A tenet that fits gets a much higher chance; one that does not fit can still appear, so results stay varied.
 - **A tenet that already fits the reformer is more likely to stay**, and so is one inherited from the old faith.
-- **No impossible faiths.** Every new tenet passes the game's own checks for the faith (`is_shown` and `can_pick`, including DLC requirements), and clashing combinations are avoided: no violent tenets in a pacifist faith, no Asceticism alongside Hedonistic or Carnal Exaltation.
+- **No impossible faiths.** Every new tenet passes the game's own checks for the faith (`is_shown` and `can_pick`, including DLC requirements), and clashing combinations are avoided: no violent tenets in a pacifist faith, no Asceticism alongside Hedonism or Carnal Exaltation.
 - **Special tenets are never removed.** Only common pagan tenets are swapped; tenets unique to a religion stay untouched.
 
 ### What fits whom
 
 | Reformer | Favoured tenets |
 |---|---|
-| Lustful, Reveler | Carnal Exaltation, Hedonistic, Ritual Celebrations |
+| Lustful, Reveler | Carnal Exaltation, Hedonism, Ritual Celebrations |
 | Chaste, Temperate, Humble | Asceticism |
-| Gluttonous, Gregarious | Ritual Celebrations, Hedonistic, Ritual Hospitality |
-| Shy, Paranoid, Deceitful, Craven, Intrigue education | Sacred Shadows, Esotericism, Cthonic Redoubts |
-| Wrathful, Brave, Vengeful, Blademaster, Martial education | Warmonger, Gruesome Festivals, Unrelenting Faith |
+| Gluttonous, Gregarious | Ritual Celebrations, Hedonism, Ritual Hospitality |
+| Shy, Paranoid, Deceitful, Craven, Intrigue education | Sacred Lies, Esotericism, Chthonic Redoubts |
+| Wrathful, Brave, Vengeful, Blademaster, Martial education | Warmongering, Gruesome Festivals, Unrelenting Faith |
 | Sadistic, Callous | Human Sacrifice, Ritual Cannibalism, Exaltation of Pain, Gruesome Festivals |
 | Zealous, Stubborn | Unrelenting Faith, Literalism, Sacrificial Ceremonies |
-| Cynical, Arbitrary, Fickle | Adaptive, Pursuit of Power |
-| Eccentric, Mystic, Learning education | Esotericism, Astrology, Mystical Birthright |
-| Ambitious, Greedy, Arrogant | Pursuit of Power, Mystical Birthright |
+| Cynical, Arbitrary, Fickle | Adaptability, Pursuit of Power |
+| Eccentric, Mystic, Learning education | Esotericism, Astrology, Auspicious Birthright |
+| Ambitious, Greedy, Arrogant | Pursuit of Power, Auspicious Birthright |
 | Content | Ancestor Worship, Communal Identity |
 | Generous, Compassionate, Calm, Forgiving, Diplomacy education | Ritual Hospitality, Communal Possessions, Sacred Childbirth |
 | Just | Legalism |
-| Diligent, Patient, Stewardship education | Megaliths, Communal Possessions |
+| Diligent, Patient, Stewardship education | Megalithic Constructions, Communal Possessions |
 | Hunter, Herbalist | Sanctity of Nature |
 | Physician | Sacred Childbirth |
 

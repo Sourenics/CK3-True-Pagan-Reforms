@@ -1,4 +1,4 @@
-# True Pagan Reforms - scripted effects.
+﻿# True Pagan Reforms - scripted effects.
 
 # Faith scope (the new, reformed faith), from tpr_on_faith_created.
 # Picks who shaped the reform, and if an AI did, swaps some of the reformed rite's tenets for ones that fit them.

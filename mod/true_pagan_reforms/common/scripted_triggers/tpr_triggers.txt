@@ -1,0 +1,127 @@
+# True Pagan Reforms - scripted triggers.
+
+# Faith scope (the new faith), from on_faith_created.
+# A reformation: the old faith is unreformed, and the new faith did not come from a rite diverging too far.
+tpr_is_pagan_reformation_trigger = {
+	exists = scope:old_faith
+	scope:old_faith = { has_doctrine_parameter = unreformed }
+	NOT = { scope:diverged ?= yes }
+	exists = main_rite
+}
+
+# Tenet scope. The tenets a reformed pagan faith may draw from. Every one is also checked with
+# rite_can_choose_tenet, so a tenet the rite cannot take (wrong religion, missing DLC...) is never added.
+tpr_is_pool_tenet_trigger = {
+	OR = {
+		this = tenet:tenet_ancestor_worship
+		this = tenet:tenet_sanctity_of_nature
+		this = tenet:tenet_sacred_childbirth
+		this = tenet:tenet_ritual_celebrations
+		this = tenet:tenet_ritual_hospitality
+		this = tenet:tenet_communal_identity
+		this = tenet:tenet_communal_possessions
+		this = tenet:tenet_warmonger
+		this = tenet:tenet_human_sacrifice
+		this = tenet:tenet_gruesome_festivals
+		this = tenet:tenet_ritual_cannibalism
+		this = tenet:tenet_exaltation_of_pain
+		this = tenet:tenet_astrology
+		this = tenet:tenet_esotericism
+		this = tenet:tenet_sacred_shadows
+		this = tenet:tenet_adaptive
+		this = tenet:tenet_literalism
+		this = tenet:tenet_legalism
+		this = tenet:tenet_asceticism
+		this = tenet:tenet_hedonistic
+		this = tenet:tenet_carnal_exaltation
+		this = tenet:tenet_unrelenting_faith
+		this = tenet:tenet_pursuit_of_power
+		this = tenet:tenet_megaliths
+		this = tenet:tenet_cthonic_redoubts
+		this = tenet:tenet_mystical_birthright
+		this = tenet:tenet_adorcism
+		this = tenet:tenet_sun_worship
+		this = tenet:tenet_sacrificial_ceremonies
+	}
+}
+
+# Tenet scope. Needs scope:tpr_rite. Blocks combinations that contradict each other.
+# rite_can_choose_tenet already covers the exclusions the base game checks in script; these are the ones
+# it only checks in the faith editor, plus asceticism against the hedonistic tenets.
+tpr_tenet_has_no_conflict_trigger = {
+	trigger_if = {
+		limit = {
+			OR = {
+				this = tenet:tenet_warmonger
+				this = tenet:tenet_human_sacrifice
+				this = tenet:tenet_gruesome_festivals
+				this = tenet:tenet_ritual_cannibalism
+				this = tenet:tenet_sacrificial_ceremonies
+			}
+		}
+		scope:tpr_rite = {
+			NOR = {
+				rite_has_tenet = tenet_pacifism
+				rite_has_tenet = tenet_dharmic_pacifism
+			}
+		}
+	}
+	trigger_if = {
+		limit = {
+			OR = {
+				this = tenet:tenet_hedonistic
+				this = tenet:tenet_carnal_exaltation
+			}
+		}
+		scope:tpr_rite = {
+			NOT = { rite_has_tenet = tenet_asceticism }
+		}
+	}
+	trigger_if = {
+		limit = { this = tenet:tenet_asceticism }
+		scope:tpr_rite = {
+			NOR = {
+				rite_has_tenet = tenet_hedonistic
+				rite_has_tenet = tenet_carnal_exaltation
+			}
+		}
+	}
+}
+
+# Tenet scope. scope:tpr_old_rite is optional. The unreformed rite also has this tenet.
+tpr_tenet_is_inherited_trigger = {
+	save_temporary_scope_as = tpr_inherit_check
+	scope:tpr_old_rite ?= { rite_has_tenet = scope:tpr_inherit_check }
+}
+
+# Tenet scope (a tenet of scope:tpr_rite). The tenet can be swapped out:
+# - only pool tenets, so a religion's own special tenets are never touched;
+# - never a tenet this mod just added;
+# - never the last tenet inherited from the old faith, so the reform keeps its kinship with it.
+tpr_can_remove_tenet_trigger = {
+	tpr_is_pool_tenet_trigger = yes
+	NOR = {
+		scope:tpr_added_1 ?= this
+		scope:tpr_added_2 ?= this
+	}
+	trigger_if = {
+		limit = { tpr_tenet_is_inherited_trigger = yes }
+		scope:tpr_rite = {
+			any_rite_tenet = {
+				count >= 2
+				tpr_tenet_is_inherited_trigger = yes
+			}
+		}
+	}
+}
+
+# Tenet scope. Needs scope:tpr_rite. The tenet can be added to the rite.
+tpr_can_add_tenet_trigger = {
+	tpr_is_pool_tenet_trigger = yes
+	save_temporary_scope_as = tpr_tenet_check
+	scope:tpr_rite = {
+		NOT = { rite_has_tenet = scope:tpr_tenet_check }
+		rite_can_choose_tenet = scope:tpr_tenet_check
+	}
+	tpr_tenet_has_no_conflict_trigger = yes
+}

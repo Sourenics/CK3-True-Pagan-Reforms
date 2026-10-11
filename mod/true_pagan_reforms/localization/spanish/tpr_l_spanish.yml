@@ -1,0 +1,8 @@
+﻿l_spanish:
+ rule_tpr_variation:0 "Variación de las reformas paganas"
+ setting_tpr_variation_light:0 "Ligera"
+ setting_tpr_variation_light_desc:0 "Cuando la IA reforma una fe pagana, #V 1#! de sus principios se cambia por otro acorde con la personalidad, el estilo de vida y la educación del reformador. Siempre se conserva al menos un principio de la antigua fe."
+ setting_tpr_variation_moderate:0 "Moderada"
+ setting_tpr_variation_moderate_desc:0 "Cuando la IA reforma una fe pagana, #V 1 o 2#! de sus principios (al 50 %) se cambian por otros acordes con la personalidad, el estilo de vida y la educación del reformador. Siempre se conserva al menos un principio de la antigua fe."
+ setting_tpr_variation_strong:0 "Fuerte"
+ setting_tpr_variation_strong_desc:0 "Cuando la IA reforma una fe pagana, #V 2#! de sus principios se cambian por otros acordes con la personalidad, el estilo de vida y la educación del reformador. Siempre se conserva al menos un principio de la antigua fe."

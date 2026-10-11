@@ -1,0 +1,159 @@
+# True Pagan Reforms - script values.
+
+# Tenet scope. Needs scope:tpr_founder (a character).
+# How well the tenet fits the founder's personality, lifestyle and education. 0 means no particular fit.
+# Every trait check is independent, so a founder with several matching traits pulls harder toward the tenet.
+tpr_tenet_affinity_value = {
+	value = 0
+	if = {
+		limit = { this = tenet:tenet_adaptive }
+		if = { limit = { scope:tpr_founder = { has_trait = cynical } } add = 30 }
+		if = { limit = { scope:tpr_founder = { has_trait = arbitrary } } add = 15 }
+		if = { limit = { scope:tpr_founder = { has_trait = fickle } } add = 20 }
+	}
+	if = {
+		limit = { this = tenet:tenet_ancestor_worship }
+		if = { limit = { scope:tpr_founder = { has_trait = content } } add = 15 }
+	}
+	if = {
+		limit = { this = tenet:tenet_asceticism }
+		if = { limit = { scope:tpr_founder = { has_trait = chaste } } add = 30 }
+		if = { limit = { scope:tpr_founder = { has_trait = temperate } } add = 20 }
+		if = { limit = { scope:tpr_founder = { has_trait = humble } } add = 15 }
+	}
+	if = {
+		limit = { this = tenet:tenet_astrology }
+		if = { limit = { scope:tpr_founder = { has_trait = eccentric } } add = 30 }
+		if = { limit = { scope:tpr_founder = { has_trait = lifestyle_mystic } } add = 20 }
+		if = { limit = { scope:tpr_founder = { has_trait = education_learning } } add = 20 }
+	}
+	if = {
+		limit = { this = tenet:tenet_carnal_exaltation }
+		if = { limit = { scope:tpr_founder = { has_trait = lustful } } add = 40 }
+		if = { limit = { scope:tpr_founder = { has_trait = lifestyle_reveler } } add = 15 }
+	}
+	if = {
+		limit = { this = tenet:tenet_communal_identity }
+		if = { limit = { scope:tpr_founder = { has_trait = content } } add = 15 }
+	}
+	if = {
+		limit = { this = tenet:tenet_communal_possessions }
+		if = { limit = { scope:tpr_founder = { has_trait = generous } } add = 30 }
+		if = { limit = { scope:tpr_founder = { has_trait = compassionate } } add = 15 }
+		if = { limit = { scope:tpr_founder = { has_trait = education_stewardship } } add = 10 }
+	}
+	if = {
+		limit = { this = tenet:tenet_cthonic_redoubts }
+		if = { limit = { scope:tpr_founder = { has_trait = craven } } add = 20 }
+		if = { limit = { scope:tpr_founder = { has_trait = paranoid } } add = 30 }
+	}
+	if = {
+		limit = { this = tenet:tenet_esotericism }
+		if = { limit = { scope:tpr_founder = { has_trait = shy } } add = 20 }
+		if = { limit = { scope:tpr_founder = { has_trait = eccentric } } add = 40 }
+		if = { limit = { scope:tpr_founder = { has_trait = lifestyle_mystic } } add = 30 }
+		if = { limit = { scope:tpr_founder = { has_trait = education_learning } } add = 10 }
+	}
+	if = {
+		limit = { this = tenet:tenet_exaltation_of_pain }
+		if = { limit = { scope:tpr_founder = { has_trait = sadistic } } add = 20 }
+		if = { limit = { scope:tpr_founder = { has_trait = callous } } add = 15 }
+	}
+	if = {
+		limit = { this = tenet:tenet_gruesome_festivals }
+		if = { limit = { scope:tpr_founder = { has_trait = wrathful } } add = 20 }
+		if = { limit = { scope:tpr_founder = { has_trait = sadistic } } add = 20 }
+		if = { limit = { scope:tpr_founder = { has_trait = vengeful } } add = 10 }
+	}
+	if = {
+		limit = { this = tenet:tenet_hedonistic }
+		if = { limit = { scope:tpr_founder = { has_trait = lustful } } add = 20 }
+		if = { limit = { scope:tpr_founder = { has_trait = gluttonous } } add = 20 }
+	}
+	if = {
+		limit = { this = tenet:tenet_human_sacrifice }
+		if = { limit = { scope:tpr_founder = { has_trait = sadistic } } add = 40 }
+	}
+	if = {
+		limit = { this = tenet:tenet_legalism }
+		if = { limit = { scope:tpr_founder = { has_trait = just } } add = 30 }
+	}
+	if = {
+		limit = { this = tenet:tenet_literalism }
+		if = { limit = { scope:tpr_founder = { has_trait = zealous } } add = 20 }
+		if = { limit = { scope:tpr_founder = { has_trait = stubborn } } add = 20 }
+	}
+	if = {
+		limit = { this = tenet:tenet_megaliths }
+		if = { limit = { scope:tpr_founder = { has_trait = diligent } } add = 20 }
+		if = { limit = { scope:tpr_founder = { has_trait = patient } } add = 15 }
+		if = { limit = { scope:tpr_founder = { has_trait = education_stewardship } } add = 15 }
+	}
+	if = {
+		limit = { this = tenet:tenet_mystical_birthright }
+		if = { limit = { scope:tpr_founder = { has_trait = eccentric } } add = 20 }
+		if = { limit = { scope:tpr_founder = { has_trait = arrogant } } add = 20 }
+	}
+	if = {
+		limit = { this = tenet:tenet_pursuit_of_power }
+		if = { limit = { scope:tpr_founder = { has_trait = cynical } } add = 15 }
+		if = { limit = { scope:tpr_founder = { has_trait = ambitious } } add = 40 }
+		if = { limit = { scope:tpr_founder = { has_trait = greedy } } add = 15 }
+		if = { limit = { scope:tpr_founder = { has_trait = arrogant } } add = 10 }
+	}
+	if = {
+		limit = { this = tenet:tenet_ritual_cannibalism }
+		if = { limit = { scope:tpr_founder = { has_trait = sadistic } } add = 20 }
+	}
+	if = {
+		limit = { this = tenet:tenet_ritual_celebrations }
+		if = { limit = { scope:tpr_founder = { has_trait = gluttonous } } add = 20 }
+		if = { limit = { scope:tpr_founder = { has_trait = gregarious } } add = 30 }
+		if = { limit = { scope:tpr_founder = { has_trait = lifestyle_reveler } } add = 30 }
+	}
+	if = {
+		limit = { this = tenet:tenet_ritual_hospitality }
+		if = { limit = { scope:tpr_founder = { has_trait = gregarious } } add = 20 }
+		if = { limit = { scope:tpr_founder = { has_trait = calm } } add = 15 }
+		if = { limit = { scope:tpr_founder = { has_trait = generous } } add = 20 }
+		if = { limit = { scope:tpr_founder = { has_trait = compassionate } } add = 20 }
+		if = { limit = { scope:tpr_founder = { has_trait = forgiving } } add = 10 }
+		if = { limit = { scope:tpr_founder = { has_trait = education_diplomacy } } add = 20 }
+	}
+	if = {
+		limit = { this = tenet:tenet_sacred_childbirth }
+		if = { limit = { scope:tpr_founder = { has_trait = compassionate } } add = 15 }
+		if = { limit = { scope:tpr_founder = { has_trait = lifestyle_physician } } add = 10 }
+	}
+	if = {
+		limit = { this = tenet:tenet_sacred_shadows }
+		if = { limit = { scope:tpr_founder = { has_trait = shy } } add = 15 }
+		if = { limit = { scope:tpr_founder = { has_trait = craven } } add = 10 }
+		if = { limit = { scope:tpr_founder = { has_trait = eccentric } } add = 15 }
+		if = { limit = { scope:tpr_founder = { has_trait = paranoid } } add = 20 }
+		if = { limit = { scope:tpr_founder = { has_trait = deceitful } } add = 20 }
+		if = { limit = { scope:tpr_founder = { has_trait = education_intrigue } } add = 20 }
+	}
+	if = {
+		limit = { this = tenet:tenet_sacrificial_ceremonies }
+		if = { limit = { scope:tpr_founder = { has_trait = zealous } } add = 10 }
+	}
+	if = {
+		limit = { this = tenet:tenet_sanctity_of_nature }
+		if = { limit = { scope:tpr_founder = { has_trait = lifestyle_hunter } } add = 30 }
+		if = { limit = { scope:tpr_founder = { has_trait = lifestyle_herbalist } } add = 20 }
+	}
+	if = {
+		limit = { this = tenet:tenet_unrelenting_faith }
+		if = { limit = { scope:tpr_founder = { has_trait = brave } } add = 10 }
+		if = { limit = { scope:tpr_founder = { has_trait = zealous } } add = 30 }
+	}
+	if = {
+		limit = { this = tenet:tenet_warmonger }
+		if = { limit = { scope:tpr_founder = { has_trait = wrathful } } add = 30 }
+		if = { limit = { scope:tpr_founder = { has_trait = brave } } add = 30 }
+		if = { limit = { scope:tpr_founder = { has_trait = vengeful } } add = 10 }
+		if = { limit = { scope:tpr_founder = { has_trait = lifestyle_blademaster } } add = 20 }
+		if = { limit = { scope:tpr_founder = { has_trait = education_martial } } add = 20 }
+	}
+}

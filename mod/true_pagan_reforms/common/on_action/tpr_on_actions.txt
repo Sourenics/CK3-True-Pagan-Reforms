@@ -1,0 +1,18 @@
+# True Pagan Reforms - on_actions.
+# Only an on_actions list is appended to the vanilla on_action: lists merge with vanilla's, an effect block here would replace it.
+
+# Code on_action. Root is the new faith; scope:old_faith is the faith it came from; scope:founder may be absent.
+# A pagan reformation creates a new faith here: the reformed rite stays as the new faith's main rite,
+# and the unreformed one becomes "Old <Faith>".
+on_faith_created = {
+	on_actions = { tpr_on_faith_created }
+}
+
+tpr_on_faith_created = {
+	trigger = {
+		tpr_is_pagan_reformation_trigger = yes
+	}
+	effect = {
+		tpr_vary_reformed_faith_effect = yes
+	}
+}

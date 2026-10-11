@@ -1,0 +1,115 @@
+# True Pagan Reforms - scripted effects.
+
+# Faith scope (the new, reformed faith), from tpr_on_faith_created.
+# Picks who shaped the reform, and if an AI did, swaps some of the reformed rite's tenets for ones that fit them.
+tpr_vary_reformed_faith_effect = {
+	if = {
+		limit = { exists = scope:founder }
+		scope:founder = { save_scope_as = tpr_founder }
+	}
+	else_if = {
+		limit = { exists = main_rite.head_of_rite }
+		main_rite.head_of_rite = { save_scope_as = tpr_founder }
+	}
+	if = {
+		limit = {
+			exists = scope:tpr_founder
+			scope:tpr_founder = { is_ai = yes }
+		}
+		main_rite = { save_scope_as = tpr_rite }
+		scope:old_faith.main_rite = { save_scope_as = tpr_old_rite }
+		tpr_vary_rite_effect = yes
+		debug_log = "True Pagan Reforms: an AI reform was varied"
+		debug_log_scopes = yes
+	}
+}
+
+# Needs scope:tpr_rite and scope:tpr_founder; scope:tpr_old_rite is optional.
+# Makes 1 or 2 swaps, following the game rule. A reformed rite has 3 tenets, so at least 1 always stays.
+tpr_vary_rite_effect = {
+	if = {
+		limit = { has_game_rule = tpr_variation_strong }
+		tpr_swap_one_tenet_effect = yes
+		tpr_swap_one_tenet_effect = yes
+	}
+	else_if = {
+		limit = { has_game_rule = tpr_variation_light }
+		tpr_swap_one_tenet_effect = yes
+	}
+	else = {
+		tpr_swap_one_tenet_effect = yes
+		random = {
+			chance = 50
+			tpr_swap_one_tenet_effect = yes
+		}
+	}
+}
+
+# Needs scope:tpr_rite and scope:tpr_founder; scope:tpr_old_rite is optional.
+# Removes one tenet and adds one that fits the founder. If nothing can be added, the removed tenet comes back.
+tpr_swap_one_tenet_effect = {
+	clear_saved_scope = tpr_tenet_to_remove
+	clear_saved_scope = tpr_tenet_to_add
+	scope:tpr_rite = {
+		random_rite_tenet = {
+			limit = { tpr_can_remove_tenet_trigger = yes }
+			weight = {
+				base = 100
+				# A tenet that already fits the founder is more likely to stay.
+				modifier = {
+					factor = 0.2
+					tpr_tenet_affinity_value > 0
+				}
+				# So is one inherited from the old faith.
+				modifier = {
+					factor = 0.5
+					tpr_tenet_is_inherited_trigger = yes
+				}
+			}
+			save_scope_as = tpr_tenet_to_remove
+		}
+	}
+	if = {
+		limit = { exists = scope:tpr_tenet_to_remove }
+		scope:tpr_rite = { remove_rite_tenet = scope:tpr_tenet_to_remove }
+		random_tenet = {
+			limit = {
+				NOT = { this = scope:tpr_tenet_to_remove }
+				tpr_can_add_tenet_trigger = yes
+			}
+			weight = {
+				base = 10
+				modifier = {
+					add = tpr_tenet_affinity_value
+				}
+			}
+			save_scope_as = tpr_tenet_to_add
+		}
+		if = {
+			limit = { exists = scope:tpr_tenet_to_add }
+			scope:tpr_rite = { add_rite_tenet = scope:tpr_tenet_to_add }
+			# Remember it, so the second swap never takes it back out.
+			if = {
+				limit = { NOT = { exists = scope:tpr_added_1 } }
+				scope:tpr_tenet_to_add = { save_scope_as = tpr_added_1 }
+			}
+			else = {
+				scope:tpr_tenet_to_add = { save_scope_as = tpr_added_2 }
+			}
+		}
+		else = {
+			scope:tpr_rite = { add_rite_tenet = scope:tpr_tenet_to_remove }
+		}
+	}
+}
+
+# Console test. Root is the player: varies the main rite of your own faith as if you were an AI reformer.
+# Type in the console: effect tpr_debug_vary_my_faith = yes
+tpr_debug_vary_my_faith = {
+	save_scope_as = tpr_founder
+	faith.main_rite = {
+		save_scope_as = tpr_rite
+		save_scope_as = tpr_old_rite
+	}
+	tpr_vary_rite_effect = yes
+}

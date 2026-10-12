@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.2.0
+
+- New: a reformer's bonds with people of another religion can bring that religion's syncretism tenet (Christian, Islamic, Jewish, Dharmic or Sinitic Syncretism, or Syncretic Folk Traditions for another pagan faith) into the reformed faith. Soulmates weigh the most, then best friends, lovers and spouses; a spouse who is also the soulmate weighs even more. Suggested by TurtleShroom.
+- Every tenet the game lets the faith choose is now an option when reforming, instead of a fixed list of pagan tenets; any tenet except syncretism can be swapped out. This fixes Religious Law always being kept. Zealous, just or paranoid reformers favour Religious Law, and new trait affinities cover Pacifism, Vows of Poverty, Polyamory, Gnosticism and others.
+- Every doctrine group the faith editor allows can now shift (adds Theism, Funeral, Coronation, Monasticism and Sacraments); religion-specific and special doctrines are never changed.
+- The faith editor's compatibility rules are read from the game files and checked after every change; a change that breaks one is undone and another option is tried.
+- Arrogant reformers now lean as much as ambitious ones toward a temporal head of faith.
+- Syncretism tenets are never removed by the mod, never added without such a bond, and a faith never gets more than one.
+- Game rules are now named **TPR: Pagan Reform Tenets** and **TPR: Pagan Reform Doctrines**, with a coloured prefix so they are easy to find. Their settings are kept in existing saves.
+- New: the head of faith can shift too, one step between None, Spiritual and Temporal, weighted by the reformer's traits. The title is handled by the game's own events, as when a rite is edited.
+- New thumbnail: a wheel of pagan symbols (triquetra, sun, moon, triple spiral, tree, stag, waves, raven, dolmen) with the gold frame used by the other Sourenics mods.
+
 ## 1.1.0
 
 - New: doctrines of an AI pagan reform also shift. Each changed doctrine moves one step to a neighbouring option (for example, Witchcraft from Shunned to Accepted or to Criminal), weighted by the reformer's traits, gender and sexuality. Head of faith and special doctrines are never changed.

@@ -28,6 +28,11 @@ tpr_vary_reformed_faith_effect = {
 # Makes 1 or 2 tenet swaps, following the tenet game rule (a reformed rite has 3 tenets, so at least 1 always stays),
 # then changes doctrines following the doctrine game rule.
 tpr_vary_rite_effect = {
+	# Only enforce the editor rules if the rite followed them to begin with, so an odd starting faith never blocks the mod.
+	if = {
+		limit = { tpr_rite_follows_editor_rules_trigger = yes }
+		save_scope_value_as = { name = tpr_check_rules value = yes }
+	}
 	if = {
 		limit = { has_game_rule = tpr_variation_strong }
 		tpr_swap_one_tenet_effect = yes
@@ -50,6 +55,7 @@ tpr_vary_rite_effect = {
 
 # Needs scope:tpr_rite and scope:tpr_founder.
 # Moves 0 to 4 doctrines one step, following the doctrine game rule. Each group changes at most once.
+# Then sets up a head of faith title if the faith now needs one.
 tpr_vary_doctrines_effect = {
 	if = {
 		limit = { has_game_rule = tpr_doctrine_variation_light }
@@ -71,25 +77,54 @@ tpr_vary_doctrines_effect = {
 		tpr_change_one_doctrine_effect = yes
 		tpr_change_one_doctrine_effect = yes
 	}
+	tpr_set_up_head_of_faith_effect = yes
+}
+
+# Needs scope:tpr_rite. Lets the game sort out the head of faith title after the doctrines changed, with the same
+# events the game fires after a rite is edited (on_rite_updated). Each one checks its own conditions, so they only
+# act when needed: create or restore a title for a spiritual or temporal head (if the game's requirements are met;
+# otherwise the faith can create it later with the game's decision), switch its succession law, or destroy a title
+# the faith no longer has a head for.
+tpr_set_up_head_of_faith_effect = {
+	if = {
+		limit = {
+			OR = {
+				scope:tpr_doctrine_1 ?= { tpr_is_head_of_faith_doctrine_trigger = yes }
+				scope:tpr_doctrine_2 ?= { tpr_is_head_of_faith_doctrine_trigger = yes }
+				scope:tpr_doctrine_3 ?= { tpr_is_head_of_faith_doctrine_trigger = yes }
+				scope:tpr_doctrine_4 ?= { tpr_is_head_of_faith_doctrine_trigger = yes }
+			}
+		}
+		scope:tpr_rite = { save_scope_as = rite }
+		scope:tpr_rite.head_of_rite ?= {
+			trigger_event = faith_creation.0004 # Update head of faith succession law
+			trigger_event = faith_creation.0001 # Temporal head of faith setup
+			trigger_event = faith_creation.0002 # Spiritual head of faith setup
+			trigger_event = faith_creation.0011 # Restore temporal head of faith
+			trigger_event = faith_creation.0012 # Restore spiritual head of faith
+			trigger_event = faith_creation.1100 # Destroy the title if the faith no longer has a head
+		}
+	}
 }
 
 # Needs scope:tpr_rite and scope:tpr_founder.
-# Moves one doctrine to a neighbouring option, preferring those that fit the founder. Does nothing if no doctrine qualifies.
+# Moves one doctrine to a valid next option, preferring those that fit the founder. A change that breaks the faith
+# editor's rules is undone and another doctrine is tried, up to 3 times. Does nothing if no doctrine qualifies.
 tpr_change_one_doctrine_effect = {
 	clear_saved_scope = tpr_doctrine_to_add
-	random_doctrine = {
-		limit = { tpr_can_change_to_doctrine_trigger = yes }
-		weight = {
-			base = 10
-			modifier = {
-				add = tpr_doctrine_affinity_value
+	clear_saved_scope = tpr_no_more_doctrines
+	while = {
+		count = 3
+		if = {
+			limit = {
+				NOT = { exists = scope:tpr_doctrine_to_add }
+				NOT = { exists = scope:tpr_no_more_doctrines }
 			}
+			tpr_try_doctrine_effect = yes
 		}
-		save_scope_as = tpr_doctrine_to_add
 	}
 	if = {
 		limit = { exists = scope:tpr_doctrine_to_add }
-		scope:tpr_rite = { change_rite_doctrine = scope:tpr_doctrine_to_add }
 		# Remember it, so the same group is not changed twice.
 		if = {
 			limit = { NOT = { exists = scope:tpr_doctrine_1 } }
@@ -109,11 +144,61 @@ tpr_change_one_doctrine_effect = {
 	}
 }
 
+# One attempt of tpr_change_one_doctrine_effect.
+tpr_try_doctrine_effect = {
+	clear_saved_scope = tpr_doctrine_candidate
+	clear_saved_scope = tpr_doctrine_previous
+	random_doctrine = {
+		limit = {
+			NOT = { is_in_list = tpr_rejected_doctrines }
+			tpr_can_change_to_doctrine_trigger = yes
+		}
+		weight = {
+			base = 10
+			modifier = {
+				add = tpr_doctrine_affinity_value
+			}
+		}
+		save_scope_as = tpr_doctrine_candidate
+	}
+	if = {
+		limit = { exists = scope:tpr_doctrine_candidate }
+		random_doctrine = {
+			limit = {
+				tpr_doctrine_same_group_as_candidate_trigger = yes
+				save_temporary_scope_as = tpr_doctrine_check
+				scope:tpr_rite = { rite_has_doctrine = scope:tpr_doctrine_check }
+			}
+			save_scope_as = tpr_doctrine_previous
+		}
+		scope:tpr_rite = { change_rite_doctrine = scope:tpr_doctrine_candidate }
+		if = {
+			limit = {
+				exists = scope:tpr_check_rules
+				NOT = { tpr_rite_follows_editor_rules_trigger = yes }
+			}
+			if = {
+				limit = { exists = scope:tpr_doctrine_previous }
+				scope:tpr_rite = { change_rite_doctrine = scope:tpr_doctrine_previous }
+			}
+			scope:tpr_doctrine_candidate = { add_to_temporary_list = tpr_rejected_doctrines }
+		}
+		else = {
+			scope:tpr_doctrine_candidate = { save_scope_as = tpr_doctrine_to_add }
+		}
+	}
+	else = {
+		save_scope_value_as = { name = tpr_no_more_doctrines value = yes }
+	}
+}
+
 # Needs scope:tpr_rite and scope:tpr_founder; scope:tpr_old_rite is optional.
-# Removes one tenet and adds one that fits the founder. If nothing can be added, the removed tenet comes back.
+# Removes one tenet and adds one that fits the founder. A tenet that breaks the faith editor's rules is taken out
+# again and another is tried, up to 3 times. If nothing can be added, the removed tenet comes back.
 tpr_swap_one_tenet_effect = {
 	clear_saved_scope = tpr_tenet_to_remove
 	clear_saved_scope = tpr_tenet_to_add
+	clear_saved_scope = tpr_no_more_tenets
 	scope:tpr_rite = {
 		random_rite_tenet = {
 			limit = { tpr_can_remove_tenet_trigger = yes }
@@ -136,22 +221,18 @@ tpr_swap_one_tenet_effect = {
 	if = {
 		limit = { exists = scope:tpr_tenet_to_remove }
 		scope:tpr_rite = { remove_rite_tenet = scope:tpr_tenet_to_remove }
-		random_tenet = {
-			limit = {
-				NOT = { this = scope:tpr_tenet_to_remove }
-				tpr_can_add_tenet_trigger = yes
-			}
-			weight = {
-				base = 10
-				modifier = {
-					add = tpr_tenet_affinity_value
+		while = {
+			count = 3
+			if = {
+				limit = {
+					NOT = { exists = scope:tpr_tenet_to_add }
+					NOT = { exists = scope:tpr_no_more_tenets }
 				}
+				tpr_try_tenet_effect = yes
 			}
-			save_scope_as = tpr_tenet_to_add
 		}
 		if = {
 			limit = { exists = scope:tpr_tenet_to_add }
-			scope:tpr_rite = { add_rite_tenet = scope:tpr_tenet_to_add }
 			# Remember it, so the second swap never takes it back out.
 			if = {
 				limit = { NOT = { exists = scope:tpr_added_1 } }
@@ -164,6 +245,51 @@ tpr_swap_one_tenet_effect = {
 		else = {
 			scope:tpr_rite = { add_rite_tenet = scope:tpr_tenet_to_remove }
 		}
+	}
+}
+
+# One attempt of tpr_swap_one_tenet_effect.
+tpr_try_tenet_effect = {
+	clear_saved_scope = tpr_tenet_candidate
+	random_tenet = {
+		limit = {
+			NOT = { this = scope:tpr_tenet_to_remove }
+			NOT = { is_in_list = tpr_rejected_tenets }
+			tpr_can_add_tenet_trigger = yes
+		}
+		weight = {
+			base = 10
+			modifier = {
+				add = tpr_tenet_affinity_value
+			}
+			# Syncretism: no base chance, only the weight of the founder's bonds.
+			modifier = {
+				tpr_is_syncretism_tenet_trigger = yes
+				add = -10
+			}
+			modifier = {
+				add = tpr_syncretism_affinity_value
+			}
+		}
+		save_scope_as = tpr_tenet_candidate
+	}
+	if = {
+		limit = { exists = scope:tpr_tenet_candidate }
+		scope:tpr_rite = { add_rite_tenet = scope:tpr_tenet_candidate }
+		if = {
+			limit = {
+				exists = scope:tpr_check_rules
+				NOT = { tpr_rite_follows_editor_rules_trigger = yes }
+			}
+			scope:tpr_rite = { remove_rite_tenet = scope:tpr_tenet_candidate }
+			scope:tpr_tenet_candidate = { add_to_temporary_list = tpr_rejected_tenets }
+		}
+		else = {
+			scope:tpr_tenet_candidate = { save_scope_as = tpr_tenet_to_add }
+		}
+	}
+	else = {
+		save_scope_value_as = { name = tpr_no_more_tenets value = yes }
 	}
 }
 

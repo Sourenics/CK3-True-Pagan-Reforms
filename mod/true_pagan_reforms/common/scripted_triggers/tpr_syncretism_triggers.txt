@@ -1,0 +1,77 @@
+﻿# True Pagan Reforms - syncretism. Generated.
+
+# Tenet scope. The syncretism tenets. They are never removed by the mod, and only added when the founder
+# has a close bond (soulmate, best friend, lover or spouse) with someone of the matching religion.
+tpr_is_syncretism_tenet_trigger = {
+	OR = {
+		this = tenet:tenet_christian_syncretism
+		this = tenet:tenet_islamic_syncretism
+		this = tenet:tenet_jewish_syncretism
+		this = tenet:tenet_eastern_syncretism
+		this = tenet:tenet_sinitic_syncretism
+		this = tenet:tenet_unreformed_syncretism
+	}
+}
+
+# Character scope. Needs scope:tpr_founder. Someone whose faith matches tenet_christian_syncretism, of another religion than the founder.
+tpr_partner_for_christian_syncretism_trigger = {
+	faith.religion = religion:christianity_religion
+	NOT = { faith.religion = scope:tpr_founder.faith.religion }
+}
+
+# Character scope. Needs scope:tpr_founder. Someone whose faith matches tenet_islamic_syncretism, of another religion than the founder.
+tpr_partner_for_islamic_syncretism_trigger = {
+	faith.religion = religion:islam_religion
+	NOT = { faith.religion = scope:tpr_founder.faith.religion }
+}
+
+# Character scope. Needs scope:tpr_founder. Someone whose faith matches tenet_jewish_syncretism, of another religion than the founder.
+tpr_partner_for_jewish_syncretism_trigger = {
+	faith.religion = religion:judaism_religion
+	NOT = { faith.religion = scope:tpr_founder.faith.religion }
+}
+
+# Character scope. Needs scope:tpr_founder. Someone whose faith matches tenet_eastern_syncretism, of another religion than the founder.
+tpr_partner_for_eastern_syncretism_trigger = {
+	faith.religion = { is_in_family = rf_eastern }
+	NOT = { faith.religion = scope:tpr_founder.faith.religion }
+}
+
+# Character scope. Needs scope:tpr_founder. Someone whose faith matches tenet_sinitic_syncretism, of another religion than the founder.
+tpr_partner_for_sinitic_syncretism_trigger = {
+	faith.religion = { is_in_family = rf_sinitic }
+	NOT = { faith.religion = scope:tpr_founder.faith.religion }
+}
+
+# Character scope. Needs scope:tpr_founder. Someone whose faith matches tenet_unreformed_syncretism, of another religion than the founder.
+tpr_partner_for_unreformed_syncretism_trigger = {
+	faith = { has_doctrine_parameter = unreformed }
+	NOT = { faith.religion = scope:tpr_founder.faith.religion }
+}
+
+# Tenet scope (a syncretism tenet). Needs scope:tpr_rite. The faith has no syncretism yet and is not hostile
+# to that family of religions; the faith editor checks these only while a faith is being edited.
+tpr_syncretism_is_allowed_trigger = {
+	scope:tpr_rite = {
+		NOR = {
+			rite_has_tenet = tenet_christian_syncretism
+			rite_has_tenet = tenet_islamic_syncretism
+			rite_has_tenet = tenet_jewish_syncretism
+			rite_has_tenet = tenet_eastern_syncretism
+			rite_has_tenet = tenet_sinitic_syncretism
+			rite_has_tenet = tenet_unreformed_syncretism
+		}
+	}
+	trigger_if = {
+		limit = { this = tenet:tenet_eastern_syncretism }
+		scope:tpr_rite.faith = { NOT = { has_doctrine = eastern_hostility_doctrine } }
+	}
+	trigger_if = {
+		limit = { this = tenet:tenet_sinitic_syncretism }
+		scope:tpr_rite.faith = { NOT = { has_doctrine = sinitic_hostility_doctrine } }
+	}
+	trigger_if = {
+		limit = { this = tenet:tenet_unreformed_syncretism }
+		scope:tpr_rite.faith = { NOT = { has_doctrine = pagan_hostility_doctrine } }
+	}
+}

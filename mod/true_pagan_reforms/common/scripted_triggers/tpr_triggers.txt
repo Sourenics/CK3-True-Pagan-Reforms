@@ -9,45 +9,8 @@ tpr_is_pagan_reformation_trigger = {
 	exists = main_rite
 }
 
-# Tenet scope. The tenets a reformed pagan faith may draw from. Every one is also checked with
-# rite_can_choose_tenet, so a tenet the rite cannot take (wrong religion, missing DLC...) is never added.
-tpr_is_pool_tenet_trigger = {
-	OR = {
-		this = tenet:tenet_ancestor_worship
-		this = tenet:tenet_sanctity_of_nature
-		this = tenet:tenet_sacred_childbirth
-		this = tenet:tenet_ritual_celebrations
-		this = tenet:tenet_ritual_hospitality
-		this = tenet:tenet_communal_identity
-		this = tenet:tenet_communal_possessions
-		this = tenet:tenet_warmonger
-		this = tenet:tenet_human_sacrifice
-		this = tenet:tenet_gruesome_festivals
-		this = tenet:tenet_ritual_cannibalism
-		this = tenet:tenet_exaltation_of_pain
-		this = tenet:tenet_astrology
-		this = tenet:tenet_esotericism
-		this = tenet:tenet_sacred_shadows
-		this = tenet:tenet_adaptive
-		this = tenet:tenet_literalism
-		this = tenet:tenet_legalism
-		this = tenet:tenet_asceticism
-		this = tenet:tenet_hedonistic
-		this = tenet:tenet_carnal_exaltation
-		this = tenet:tenet_unrelenting_faith
-		this = tenet:tenet_pursuit_of_power
-		this = tenet:tenet_megaliths
-		this = tenet:tenet_cthonic_redoubts
-		this = tenet:tenet_mystical_birthright
-		this = tenet:tenet_adorcism
-		this = tenet:tenet_sun_worship
-		this = tenet:tenet_sacrificial_ceremonies
-	}
-}
-
-# Tenet scope. Needs scope:tpr_rite. Blocks combinations that contradict each other.
-# rite_can_choose_tenet already covers the exclusions the base game checks in script; these are the ones
-# it only checks in the faith editor, plus asceticism against the hedonistic tenets.
+# Tenet scope. Needs scope:tpr_rite. Quick pre-check of combinations that contradict each other, so obviously
+# clashing tenets are not drawn at all. The full set of editor rules is checked after adding (tpr_editor_rules_triggers.txt).
 tpr_tenet_has_no_conflict_trigger = {
 	trigger_if = {
 		limit = {
@@ -100,11 +63,11 @@ tpr_tenet_is_inherited_trigger = {
 }
 
 # Tenet scope (a tenet of scope:tpr_rite). The tenet can be swapped out:
-# - only pool tenets, so a religion's own special tenets are never touched;
+# - any tenet except syncretism, which only comes from the founder's bonds;
 # - never a tenet this mod just added;
 # - never the last tenet inherited from the old faith, so the reform keeps its kinship with it.
 tpr_can_remove_tenet_trigger = {
-	tpr_is_pool_tenet_trigger = yes
+	NOT = { tpr_is_syncretism_tenet_trigger = yes }
 	NOR = {
 		scope:tpr_added_1 ?= this
 		scope:tpr_added_2 ?= this
@@ -125,9 +88,18 @@ tpr_can_remove_tenet_trigger = {
 	}
 }
 
-# Tenet scope. Needs scope:tpr_rite. The tenet can be added to the rite.
+# Tenet scope. Needs scope:tpr_rite. The tenet can be added to the rite: any tenet the game lets the rite choose
+# (rite_can_choose_tenet checks religion, DLC and character requirements). Syncretism tenets only qualify through a
+# bond of the founder (see tpr_syncretism_triggers.txt). The editor's compatibility rules are checked after adding.
 tpr_can_add_tenet_trigger = {
-	tpr_is_pool_tenet_trigger = yes
+	OR = {
+		NOT = { tpr_is_syncretism_tenet_trigger = yes }
+		AND = {
+			tpr_is_syncretism_tenet_trigger = yes
+			tpr_syncretism_affinity_value > 0
+			tpr_syncretism_is_allowed_trigger = yes
+		}
+	}
 	save_temporary_scope_as = tpr_tenet_check
 	scope:tpr_rite = {
 		NOT = { rite_has_tenet = scope:tpr_tenet_check }

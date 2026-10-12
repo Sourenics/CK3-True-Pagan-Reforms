@@ -1,0 +1,216 @@
+﻿# True Pagan Reforms - faith editor rules. Generated from the game's tenet and doctrine files.
+# The game checks these only while a faith is being edited (selected_doctrines), so a script change could break
+# them. Each rule of a tenet or doctrine the rite has must hold, exactly as in the faith editor.
+
+# Needs scope:tpr_rite.
+tpr_rite_follows_editor_rules_trigger = {
+	scope:tpr_rite = {
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_aniconism }
+			custom_description = { text = incompatible_doctrine_mummification_trigger NOT = { rite_has_doctrine = doctrine_funeral_mummification } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_alexandrian_catechism }
+			custom_description = { text = doctrine_pluralism_fundamentalist_trigger NOT = { rite_has_doctrine = doctrine_pluralism_fundamentalist } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_armed_pilgrimages }
+			custom_description = { text = incompatible_tenet_pacifism_trigger NOT = { rite_has_tenet = tenet_pacifism } }
+			custom_description = { text = incompatible_tenet_dharmic_pacifism_trigger NOT = { rite_has_tenet = tenet_dharmic_pacifism } }
+			custom_description = { text = incompatible_tenet_armed_pilgrimages_vs_forbidden_pilgrimages NOT = { rite_has_doctrine = doctrine_pilgrimage_forbidden } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_communion }
+			custom_description = { text = doctrine_requires_head_of_faith_trigger NOT = { rite_has_doctrine = doctrine_no_head } }
+			custom_description = { text = incompatible_tenet_sacred_shadows_trigger NOT = { rite_has_tenet = tenet_sacred_shadows } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_consolamentum }
+			custom_description = { text = incompatible_tenet_sacrificial_ceremonies_trigger NOT = { rite_has_tenet = tenet_sacrificial_ceremonies } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_divine_marriage }
+			custom_description = { text = doctrine_unrestricted_consanguinity_trigger rite_has_doctrine = doctrine_consanguinity_unrestricted }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_gnosticism }
+			custom_description = { text = incompatible_tenet_eastern_syncretism_trigger NOT = { rite_has_tenet = tenet_eastern_syncretism } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_mendicant_preachers }
+			custom_description = { text = incompatible_tenet_hedonistic_trigger NOT = { rite_has_tenet = tenet_hedonistic } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_pacifism }
+			custom_description = { text = incompatible_tenet_human_sacrifice_trigger NOT = { rite_has_tenet = tenet_human_sacrifice } }
+			custom_description = { text = incompatible_tenet_armed_pilgrimages_trigger NOT = { rite_has_tenet = tenet_armed_pilgrimages } }
+			custom_description = { text = incompatible_tenet_gruesome_festivals_trigger NOT = { rite_has_tenet = tenet_gruesome_festivals } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_pentarchy }
+			custom_description = { text = doctrine_pluralism_pluralistic_trigger NOT = { rite_has_doctrine = doctrine_pluralism_pluralistic } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_pastoral_isolation }
+			custom_description = { text = doctrine_no_head_of_faith_trigger rite_has_doctrine = doctrine_no_head }
+			custom_description = { text = incompatible_tenet_false_conversion_sanction_trigger NOT = { rite_has_tenet = tenet_false_conversion_sanction } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_adaptive }
+			custom_description = { text = doctrine_inverted_pluralism_pluralistic_trigger NOR = { rite_has_doctrine = doctrine_pluralism_fundamentalist rite_has_doctrine = doctrine_pluralism_righteous } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_bhakti }
+			custom_tooltip = { text = incompatible_doctrine_monotheist NOT = { rite_has_doctrine = doctrine_monotheist } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_dharmic_pacifism }
+			custom_description = { text = incompatible_tenet_human_sacrifice_trigger NOT = { rite_has_tenet = tenet_human_sacrifice } }
+			custom_description = { text = incompatible_tenet_armed_pilgrimages_trigger NOT = { rite_has_tenet = tenet_armed_pilgrimages } }
+			custom_description = { text = incompatible_tenet_gruesome_festivals_trigger NOT = { rite_has_tenet = tenet_gruesome_festivals } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_hedonistic }
+			custom_description = { text = incompatible_tenet_anachoresis_trigger NOT = { rite_has_tenet = tenet_anachoresis } }
+			custom_description = { text = incompatible_tenet_mendicant_preachers_trigger NOT = { rite_has_tenet = tenet_mendicant_preachers } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_human_sacrifice }
+			custom_description = { text = incompatible_tenet_pacifism_trigger NOT = { rite_has_tenet = tenet_pacifism } }
+			custom_description = { text = incompatible_tenet_dharmic_pacifism_trigger NOT = { rite_has_tenet = tenet_dharmic_pacifism } }
+			custom_description = { text = incompatible_tenet_gruesome_festivals_trigger NOT = { rite_has_tenet = tenet_gruesome_festivals } }
+			custom_description = { text = incompatible_tenet_sacrificial_ceremonies_trigger NOT = { rite_has_tenet = tenet_sacrificial_ceremonies } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_warmonger }
+			custom_description = { text = incompatible_tenet_pacifism_trigger NOT = { rite_has_tenet = tenet_pacifism } }
+			custom_description = { text = incompatible_tenet_dharmic_pacifism_trigger NOT = { rite_has_tenet = tenet_dharmic_pacifism } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_gruesome_festivals }
+			custom_description = { text = incompatible_tenet_pacifism_trigger NOT = { rite_has_tenet = tenet_pacifism } }
+			custom_description = { text = incompatible_tenet_dharmic_pacifism_trigger NOT = { rite_has_tenet = tenet_dharmic_pacifism } }
+			custom_description = { text = incompatible_tenet_human_sacrifice_trigger NOT = { rite_has_tenet = tenet_human_sacrifice } }
+			custom_description = { text = incompatible_tenet_sacrificial_ceremonies_trigger NOT = { rite_has_tenet = tenet_sacrificial_ceremonies } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_household_gods }
+			custom_tooltip = { text = incompatible_doctrine_monotheist NOT = { rite_has_doctrine = doctrine_monotheist } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_sinitic_syncretism }
+			custom_description = { text = incompatible_tenet_gnosticism_trigger NOT = { rite_has_tenet = tenet_gnosticism } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_eastern_syncretism }
+			custom_description = { text = incompatible_tenet_gnosticism_trigger NOT = { rite_has_tenet = tenet_gnosticism } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_natural_primitivism }
+			custom_description = { text = incompatible_with_crimes_trigger NOR = { rite_has_doctrine = doctrine_adultery_women_crime rite_has_doctrine = doctrine_homosexuality_crime rite_has_doctrine = doctrine_adultery_men_crime rite_has_doctrine = doctrine_witchcraft_crime rite_has_doctrine = doctrine_deviancy_crime } OR = { rite_has_doctrine = doctrine_kinslaying_accepted rite_has_doctrine = doctrine_kinslaying_shunned } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_sacred_shadows }
+			custom_description = { text = incompatible_tenet_communion_trigger NOT = { rite_has_tenet = tenet_communion } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_polyamory }
+			custom_description = { text = ADULTERY_MUST_BE_FULLY_ACCEPTED NOR = { rite_has_doctrine = doctrine_adultery_women_crime rite_has_doctrine = doctrine_adultery_women_shunned rite_has_doctrine = doctrine_adultery_men_crime rite_has_doctrine = doctrine_adultery_men_shunned } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_sacrificial_ceremonies }
+			custom_description = { text = incompatible_tenet_pacifism_trigger NOT = { rite_has_tenet = tenet_pacifism } }
+			custom_description = { text = incompatible_tenet_dharmic_pacifism_trigger NOT = { rite_has_tenet = tenet_dharmic_pacifism } }
+			custom_description = { text = incompatible_tenet_gruesome_festivals_trigger NOT = { rite_has_tenet = tenet_gruesome_festivals } }
+			custom_description = { text = incompatible_tenet_human_sacrifice_trigger NOT = { rite_has_tenet = tenet_human_sacrifice } }
+			custom_description = { text = incompatible_tenet_consolamentum_trigger NOT = { rite_has_tenet = tenet_consolamentum } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_fp3_fedayeen }
+			custom_description = { text = incompatible_tenet_pacifism_trigger NOT = { rite_has_tenet = tenet_pacifism } }
+			custom_description = { text = incompatible_tenet_dharmic_pacifism_trigger NOT = { rite_has_tenet = tenet_dharmic_pacifism } }
+			custom_description = { text = fedayeen_required_doctrines_trigger OR = { rite_has_tenet = tenet_warmonger rite_has_tenet = tenet_unrelenting_faith rite_has_tenet = tenet_consolamentum rite_has_tenet = tenet_armed_pilgrimages rite_has_tenet = tenet_struggle_submission rite_has_tenet = tenet_pursuit_of_power } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_extinction_of_dharma }
+			custom_description = { text = incompatible_tenet_pacifism_trigger NOT = { rite_has_tenet = tenet_pacifism } }
+			custom_description = { text = incompatible_tenet_dharmic_pacifism_trigger NOT = { rite_has_tenet = tenet_dharmic_pacifism } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_sacred_destruction }
+			custom_description = { text = incompatible_tenet_pacifism_trigger NOT = { rite_has_tenet = tenet_pacifism } }
+			custom_description = { text = incompatible_tenet_dharmic_pacifism_trigger NOT = { rite_has_tenet = tenet_dharmic_pacifism } }
+			custom_description = { text = incompatible_tenet_tenet_preservation_trigger NOT = { rite_has_tenet = tenet_preservation } }
+		}
+		trigger_if = {
+			limit = { rite_has_tenet = tenet_preservation }
+			custom_description = { text = incompatible_tenet_tenet_sacred_destruction_trigger NOT = { rite_has_tenet = tenet_sacred_destruction } }
+		}
+		trigger_if = {
+			limit = { rite_has_doctrine = doctrine_deviancy_virtuous }
+			custom_description = { text = must_select_carnal_exaltation rite_has_tenet = tenet_carnal_exaltation }
+		}
+		trigger_if = {
+			limit = { rite_has_doctrine = doctrine_pluralism_pluralistic }
+			custom_description = { text = incompatible_tenet_pentarchy_trigger NOT = { rite_has_tenet = tenet_pentarchy } }
+		}
+		trigger_if = {
+			limit = { rite_has_doctrine = doctrine_theocracy_temporal }
+			custom_description = { text = incompatible_doctrine_theocracy_temporal_trigger NOT = { rite_has_doctrine = doctrine_temporal_head } }
+		}
+		trigger_if = {
+			limit = { rite_has_doctrine = doctrine_temporal_head }
+			custom_description = { text = incompatible_doctrine_theocracy_temporal_trigger NOT = { rite_has_doctrine = doctrine_theocracy_temporal } }
+			custom_description = { text = incompatible_doctrine_spiritual_appointment_temporal_trigger NOR = { rite_has_doctrine = doctrine_clerical_succession_spiritual_appointment rite_has_doctrine = doctrine_clerical_succession_spiritual_fixed_appointment } }
+		}
+		trigger_if = {
+			limit = { rite_has_doctrine = doctrine_clerical_succession_spiritual_appointment }
+			custom_description = { text = incompatible_doctrine_spiritual_appointment_temporal_trigger NOT = { rite_has_doctrine = doctrine_temporal_head } }
+		}
+		trigger_if = {
+			limit = { rite_has_doctrine = doctrine_clerical_succession_spiritual_fixed_appointment }
+			custom_description = { text = incompatible_doctrine_spiritual_appointment_temporal_trigger NOT = { rite_has_doctrine = doctrine_temporal_head } }
+		}
+		trigger_if = {
+			limit = { rite_has_doctrine = doctrine_funeral_mummification }
+			custom_description = { text = incompatible_tenet_aniconism_trigger NOT = { rite_has_tenet = tenet_aniconism } }
+		}
+		trigger_if = {
+			limit = { rite_has_doctrine = doctrine_anointment_permitted }
+			custom_description = { text = doctrine_requires_theocratic_head_of_faith_trigger NOR = { rite_has_doctrine = doctrine_no_head rite_has_doctrine = doctrine_temporal_head } }
+		}
+		trigger_if = {
+			limit = { rite_has_doctrine = doctrine_imperial_anointment }
+			custom_description = { text = doctrine_requires_theocratic_head_of_faith_trigger NOR = { rite_has_doctrine = doctrine_no_head rite_has_doctrine = doctrine_temporal_head } }
+		}
+		trigger_if = {
+			limit = { rite_has_doctrine = doctrine_monasticism_encouraged }
+			custom_description = { text = incompatible_tenet_hedonistic_trigger NOT = { rite_has_tenet = tenet_hedonistic } }
+		}
+		trigger_if = {
+			limit = { rite_has_doctrine = doctrine_monasticism_accepted }
+			custom_description = { text = incompatible_tenet_hedonistic_trigger NOT = { rite_has_tenet = tenet_hedonistic } }
+		}
+		trigger_if = {
+			limit = { rite_has_doctrine = doctrine_monasticism_absent }
+			custom_description = { text = incompatible_tenet_anachoresis_trigger NOT = { rite_has_tenet = tenet_anachoresis } }
+		}
+		trigger_if = {
+			limit = { rite_has_doctrine = doctrine_monasticism_forbidden }
+			custom_description = { text = incompatible_tenet_anachoresis_trigger NOT = { rite_has_tenet = tenet_anachoresis } }
+		}
+		trigger_if = {
+			limit = { rite_has_doctrine = doctrine_sacraments_absent }
+			custom_description = { text = incompatible_tenet_communion_trigger NOT = { rite_has_tenet = tenet_communion } }
+		}
+		# True Pagan Reforms: no Ritual Cannibalism in a pacifist faith, no Asceticism with the hedonistic tenets.
+		NAND = {
+			rite_has_tenet = tenet_ritual_cannibalism
+			OR = { rite_has_tenet = tenet_pacifism rite_has_tenet = tenet_dharmic_pacifism }
+		}
+		NAND = {
+			rite_has_tenet = tenet_asceticism
+			OR = { rite_has_tenet = tenet_hedonistic rite_has_tenet = tenet_carnal_exaltation }
+		}
+	}
+}

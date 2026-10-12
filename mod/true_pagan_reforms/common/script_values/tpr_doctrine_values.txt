@@ -277,4 +277,83 @@ tpr_doctrine_affinity_value = {
 		if = { limit = { scope:tpr_founder = { has_trait = eccentric } } add = 20 }
 		if = { limit = { scope:tpr_founder = { has_trait = lifestyle_mystic } } add = 25 }
 	}
+	if = {
+		limit = { this = doctrine:doctrine_no_head }
+		if = { limit = { scope:tpr_founder = { has_trait = content } } add = 15 }
+		if = { limit = { scope:tpr_founder = { has_trait = humble } } add = 15 }
+		if = { limit = { scope:tpr_founder = { has_trait = cynical } } add = 10 }
+	}
+	if = {
+		limit = { this = doctrine:doctrine_spiritual_head }
+		if = { limit = { scope:tpr_founder = { has_trait = zealous } } add = 25 }
+		if = { limit = { scope:tpr_founder = { has_trait = education_learning } } add = 20 }
+		if = { limit = { scope:tpr_founder = { has_trait = lifestyle_mystic } } add = 10 }
+	}
+	if = {
+		limit = { this = doctrine:doctrine_temporal_head }
+		if = { limit = { scope:tpr_founder = { has_trait = ambitious } } add = 30 }
+		if = { limit = { scope:tpr_founder = { has_trait = arrogant } } add = 30 }
+		if = { limit = { scope:tpr_founder = { has_trait = greedy } } add = 10 }
+	}
+	if = {
+		limit = { this = doctrine:doctrine_monotheist }
+		if = { limit = { scope:tpr_founder = { has_trait = zealous } } add = 15 }
+		if = { limit = { scope:tpr_founder = { has_trait = stubborn } } add = 10 }
+	}
+	if = {
+		limit = { this = doctrine:doctrine_funeral_stoic }
+		if = { limit = { scope:tpr_founder = { has_trait = calm } } add = 15 }
+		if = { limit = { scope:tpr_founder = { has_trait = brave } } add = 10 }
+	}
+	if = {
+		limit = { this = doctrine:doctrine_funeral_bewailment }
+		if = { limit = { scope:tpr_founder = { has_trait = compassionate } } add = 15 }
+		if = { limit = { scope:tpr_founder = { has_trait = gregarious } } add = 10 }
+	}
+	if = {
+		limit = { this = doctrine:doctrine_funeral_cremation }
+		if = { limit = { scope:tpr_founder = { has_trait = lifestyle_mystic } } add = 10 }
+	}
+	if = {
+		limit = { this = doctrine:doctrine_funeral_sky_burial }
+		if = { limit = { scope:tpr_founder = { has_trait = eccentric } } add = 15 }
+		if = { limit = { scope:tpr_founder = { has_trait = lifestyle_hunter } } add = 10 }
+	}
+	if = {
+		limit = { this = doctrine:doctrine_funeral_mummification }
+		if = { limit = { scope:tpr_founder = { has_trait = arrogant } } add = 20 }
+	}
+	if = {
+		limit = { this = doctrine:doctrine_no_anointment }
+		if = { limit = { scope:tpr_founder = { has_trait = cynical } } add = 15 }
+		if = { limit = { scope:tpr_founder = { has_trait = humble } } add = 10 }
+	}
+	if = {
+		limit = { this = doctrine:doctrine_anointment_permitted }
+		if = { limit = { scope:tpr_founder = { has_trait = zealous } } add = 15 }
+	}
+	if = {
+		limit = { this = doctrine:doctrine_imperial_anointment }
+		if = { limit = { scope:tpr_founder = { has_trait = arrogant } } add = 20 }
+		if = { limit = { scope:tpr_founder = { has_trait = ambitious } } add = 15 }
+	}
+	if = {
+		limit = { this = doctrine:doctrine_monasticism_encouraged }
+		if = { limit = { scope:tpr_founder = { has_trait = zealous } } add = 15 }
+		if = { limit = { scope:tpr_founder = { has_trait = chaste } } add = 10 }
+		if = { limit = { scope:tpr_founder = { has_trait = education_learning } } add = 10 }
+	}
+	if = {
+		limit = { this = doctrine:doctrine_monasticism_forbidden }
+		if = { limit = { scope:tpr_founder = { has_trait = lustful } } add = 15 }
+		if = { limit = { scope:tpr_founder = { has_trait = cynical } } add = 10 }
+	}
+	if = {
+		limit = { this = doctrine:doctrine_sacraments_central }
+		if = { limit = { scope:tpr_founder = { has_trait = zealous } } add = 15 }
+	}
+	if = {
+		limit = { this = doctrine:doctrine_sacraments_absent }
+		if = { limit = { scope:tpr_founder = { has_trait = cynical } } add = 15 }
+	}
 }

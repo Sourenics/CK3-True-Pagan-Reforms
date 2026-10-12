@@ -5,7 +5,7 @@
 A Crusader Kings III mod that makes AI pagan reformations less predictable. When an AI ruler reforms a pagan faith, some of the new faith's tenets are swapped for ones that fit the reformer, and some of its doctrines shift in the same direction: a lustful reformer may preach Carnal Exaltation and accept adultery, an eccentric mystic Esotericism and witchcraft, a sadistic warlord Human Sacrifice. Every playthrough gets its own reformed faiths.
 
 - **Game version:** 1.20.x
-- **Mod version:** 1.1.0
+- **Mod version:** 1.2.0
 - **Author:** [Sourenics](https://github.com/Sourenics)
 - **Steam Workshop:** [True Pagan Reforms](https://steamcommunity.com/sharedfiles/filedetails/?id=3817742251)
 
@@ -16,11 +16,13 @@ A Crusader Kings III mod that makes AI pagan reformations less predictable. When
 - **Kinship with the old faith.** If the reformed faith kept tenets from the unreformed one, at least one of them is always kept.
 - **Shaped by the reformer.** The new tenets are drawn at random, weighted by the reformer's personality traits, lifestyle traits and education. A tenet that fits gets a much higher chance; one that does not fit can still appear, so results stay varied.
 - **A tenet that already fits the reformer is more likely to stay**, and so is one inherited from the old faith.
-- **No impossible faiths.** Every new tenet passes the game's own checks for the faith (`is_shown` and `can_pick`, including DLC requirements), and clashing combinations are avoided: no violent tenets in a pacifist faith, no Asceticism alongside Hedonism or Carnal Exaltation.
-- **Special tenets are never removed.** Only common pagan tenets are swapped; tenets unique to a religion stay untouched.
+- **Every tenet is an option.** Any tenet the game lets the faith choose can be added, and any tenet can be swapped out, except syncretism (which only comes from the reformer's bonds) and the last one inherited from the old faith.
+- **No impossible faiths.** Every new tenet and doctrine passes the game's own checks for the faith (`is_shown` and `can_pick`, including religion and DLC requirements). The faith editor's compatibility rules, which the game only checks while editing a faith, are read from the game files and checked after every change; a change that breaks one is undone and another option is tried. On top of that, the mod keeps violent tenets out of pacifist faiths and Asceticism away from Hedonism and Carnal Exaltation.
+- **Love and friendship across faiths.** If the reformer has a soulmate, best friend, lover or spouse of another religion, that religion's syncretism tenet (Christian, Islamic, Jewish, Dharmic or Sinitic Syncretism, or Syncretic Folk Traditions for another pagan faith) can be one of the new tenets. A soulmate pulls hardest, and a spouse who is also the soulmate even more; a best friend, a lover and a spouse pull less, in that order. Without such a bond, syncretism tenets are never added, and a faith never gets more than one.
 - **Doctrines shift too.** Depending on its own game rule, 0 to 4 doctrines move one step to a neighbouring option (for example, Witchcraft from Shunned to Accepted or to Criminal, never straight from Criminal to Virtuous). Each doctrine changes at most once per reform, and the choice is weighted by the reformer's traits, gender and sexuality.
-- **Doctrines that can change:** View on Gender, Religious Attitude, Clerical Tradition, Pilgrimage Attitude, Clerical Function, Clerical Gender, Clerical Marriage, Clerical Appointment, Marriage Type, Divorce, Bastardry, Consanguinity and all crime doctrines (Same-Sex Relations, Deviancy, Male and Female Adultery, Kinslaying, Witchcraft). The head of faith and special doctrines are never changed.
-- **Doctrines and tenets stay compatible**, following the faith editor's rules: Adaptability only with Pluralist, Virtuous Deviancy only with Carnal Exaltation, no Theocratic tradition or spiritual appointment with a temporal head of faith, and no gender-dominated view under the full gender equality game rule.
+- **Doctrines that can change:** every doctrine group a faith can pick in the editor except the religion-specific ones: Head of Faith, View on Gender, Religious Attitude, Clerical Tradition, Pilgrimage Attitude, Theism, Clerical Function, Clerical Gender, Clerical Marriage, Clerical Appointment, Funeral, Coronation (with its DLC), Monasticism, Sacraments, Marriage Type, Divorce, Bastardry, Consanguinity and all crime doctrines (Same-Sex Relations, Deviancy, Male and Female Adultery, Kinslaying, Witchcraft). Groups with an order move one step; the others can move to any option the game allows. Special doctrines are never changed.
+- **Head of faith.** It moves one step too (None, Spiritual, Temporal). The title is then handled by the game's own events, the same ones it uses when a rite is edited: a title is created when the requirements (holy sites, piety) are met, otherwise the faith can create it later with the game's decision.
+- **Doctrines and tenets stay compatible**, following the faith editor's rules: for example Adaptability only with Pluralist, Virtuous Deviancy only with Carnal Exaltation, Polyamory only with accepted adultery, and no Theocratic tradition or spiritual appointment with a temporal head of faith.
 
 ### What fits whom
 
@@ -32,24 +34,42 @@ A Crusader Kings III mod that makes AI pagan reformations less predictable. When
 | Shy, Paranoid, Deceitful, Craven, Intrigue education | Sacred Lies, Esotericism, Chthonic Redoubts |
 | Wrathful, Brave, Vengeful, Blademaster, Martial education | Warmongering, Gruesome Festivals, Unrelenting Faith |
 | Sadistic, Callous | Human Sacrifice, Ritual Cannibalism, Exaltation of Pain, Gruesome Festivals |
-| Zealous, Stubborn | Unrelenting Faith, Literalism, Sacrificial Ceremonies |
+| Zealous, Stubborn | Unrelenting Faith, Literalism, Sacrificial Ceremonies, Religious Law |
 | Cynical, Arbitrary, Fickle | Adaptability, Pursuit of Power |
 | Eccentric, Mystic, Learning education | Esotericism, Astrology, Auspicious Birthright |
 | Ambitious, Greedy, Arrogant | Pursuit of Power, Auspicious Birthright |
 | Content | Ancestor Worship, Communal Identity |
 | Generous, Compassionate, Calm, Forgiving, Diplomacy education | Ritual Hospitality, Communal Possessions, Sacred Childbirth |
-| Just | Legalism |
+| Just | Legalism, Religious Law |
 | Diligent, Patient, Stewardship education | Megalithic Constructions, Communal Possessions |
 | Hunter, Herbalist | Sanctity of Nature |
 | Physician | Sacred Childbirth |
+| Compassionate, Calm | Pacifism |
+| Generous, Humble, Temperate | Vows of Poverty, Mendicant Preaching |
+| Deceitful, Cynical | Sanctioned False Conversions |
+| Lustful | Polyamory |
+| Arrogant | Divine Marriage |
+| Learning education, Eccentric | Gnosticism |
 
-Other tenets in the pool (Ancestor Worship, Adorcism, Sun Worship and the rest) can still be drawn with the base chance.
+Every other tenet the faith can choose can still be drawn with the base chance.
+
+| Reformer's bond with someone of another religion | Weight for that religion's syncretism tenet |
+|---|---|
+| Soulmate | 150 |
+| Best friend | 80 |
+| Lover | 60 |
+| Spouse | 30 (100 if the spouse is also the soulmate) |
+
+Weights add up, so a Christian spouse who is also the reformer's soulmate gives Christian Syncretism 250. For comparison, every other tenet starts at 10, plus up to about 40 to 80 for fitting traits.
+
 
 | Reformer | Favoured doctrines |
 |---|---|
 | Lustful, Reveler | Adultery Accepted, Deviancy Accepted or Virtuous, Concubines or Polygamous, Divorce Always Allowed, Clerical Marriage Allowed |
 | Chaste, Temperate | Monogamous, Adultery and Deviancy Criminal, Clerical Marriage Disallowed, No Bastards |
-| Zealous | Fundamentalist or Righteous, Theocratic, Mandatory or Encouraged Pilgrimage, Witchcraft Criminal |
+| Zealous | Head of Faith: Spiritual, Fundamentalist or Righteous, Theocratic, Mandatory or Encouraged Pilgrimage, Witchcraft Criminal |
+| Ambitious, Arrogant, Greedy | Head of Faith: Temporal |
+| Content, Humble | Head of Faith: None |
 | Cynical, Ambitious, Arrogant | Pluralist, Lay Clergy, Temporal Appointment, laxer Kinslaying |
 | Eccentric, Mystic, Herbalist | Witchcraft Accepted or Virtuous |
 | Paranoid | Witchcraft Criminal, Pilgrimage Forbidden, Temporal for Life appointment |
@@ -66,7 +86,7 @@ Other tenets in the pool (Ancestor Worship, Adorcism, Sun Worship and the rest) 
 
 Two rules in the game rules screen when starting a new game:
 
-| Setting | **Pagan Reform Tenet Variation**: tenets swapped | **Pagan Reform Doctrine Variation**: doctrines changed |
+| Setting | **TPR: Pagan Reform Tenets**: tenets swapped | **TPR: Pagan Reform Doctrines**: doctrines changed |
 |---|---|---|
 | None | — | 0 |
 | Light | 1 | 1 |

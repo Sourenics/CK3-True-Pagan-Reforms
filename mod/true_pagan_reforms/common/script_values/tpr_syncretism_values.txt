@@ -1,0 +1,56 @@
+﻿# True Pagan Reforms - syncretism weight. Generated.
+
+# Tenet scope. Needs scope:tpr_founder. How strongly the founder's bonds pull toward this syncretism tenet.
+# Soulmate 150, best friend 80, lover 60, spouse 30 (+70 more if the spouse is also the soulmate).
+# Each kind of bond counts once. 0 means no bond with that religion, and then the tenet is never drawn.
+tpr_syncretism_affinity_value = {
+	value = 0
+	if = {
+		limit = { this = tenet:tenet_christian_syncretism }
+		if = { limit = { scope:tpr_founder = { any_relation = { type = soulmate tpr_partner_for_christian_syncretism_trigger = yes } } } add = 150 }
+		if = { limit = { scope:tpr_founder = { any_relation = { type = best_friend tpr_partner_for_christian_syncretism_trigger = yes } } } add = 80 }
+		if = { limit = { scope:tpr_founder = { any_relation = { type = lover tpr_partner_for_christian_syncretism_trigger = yes } } } add = 60 }
+		if = { limit = { scope:tpr_founder = { any_spouse = { tpr_partner_for_christian_syncretism_trigger = yes } } } add = 30 }
+		if = { limit = { scope:tpr_founder = { any_spouse = { tpr_partner_for_christian_syncretism_trigger = yes has_relation_soulmate = scope:tpr_founder } } } add = 70 }
+	}
+	if = {
+		limit = { this = tenet:tenet_islamic_syncretism }
+		if = { limit = { scope:tpr_founder = { any_relation = { type = soulmate tpr_partner_for_islamic_syncretism_trigger = yes } } } add = 150 }
+		if = { limit = { scope:tpr_founder = { any_relation = { type = best_friend tpr_partner_for_islamic_syncretism_trigger = yes } } } add = 80 }
+		if = { limit = { scope:tpr_founder = { any_relation = { type = lover tpr_partner_for_islamic_syncretism_trigger = yes } } } add = 60 }
+		if = { limit = { scope:tpr_founder = { any_spouse = { tpr_partner_for_islamic_syncretism_trigger = yes } } } add = 30 }
+		if = { limit = { scope:tpr_founder = { any_spouse = { tpr_partner_for_islamic_syncretism_trigger = yes has_relation_soulmate = scope:tpr_founder } } } add = 70 }
+	}
+	if = {
+		limit = { this = tenet:tenet_jewish_syncretism }
+		if = { limit = { scope:tpr_founder = { any_relation = { type = soulmate tpr_partner_for_jewish_syncretism_trigger = yes } } } add = 150 }
+		if = { limit = { scope:tpr_founder = { any_relation = { type = best_friend tpr_partner_for_jewish_syncretism_trigger = yes } } } add = 80 }
+		if = { limit = { scope:tpr_founder = { any_relation = { type = lover tpr_partner_for_jewish_syncretism_trigger = yes } } } add = 60 }
+		if = { limit = { scope:tpr_founder = { any_spouse = { tpr_partner_for_jewish_syncretism_trigger = yes } } } add = 30 }
+		if = { limit = { scope:tpr_founder = { any_spouse = { tpr_partner_for_jewish_syncretism_trigger = yes has_relation_soulmate = scope:tpr_founder } } } add = 70 }
+	}
+	if = {
+		limit = { this = tenet:tenet_eastern_syncretism }
+		if = { limit = { scope:tpr_founder = { any_relation = { type = soulmate tpr_partner_for_eastern_syncretism_trigger = yes } } } add = 150 }
+		if = { limit = { scope:tpr_founder = { any_relation = { type = best_friend tpr_partner_for_eastern_syncretism_trigger = yes } } } add = 80 }
+		if = { limit = { scope:tpr_founder = { any_relation = { type = lover tpr_partner_for_eastern_syncretism_trigger = yes } } } add = 60 }
+		if = { limit = { scope:tpr_founder = { any_spouse = { tpr_partner_for_eastern_syncretism_trigger = yes } } } add = 30 }
+		if = { limit = { scope:tpr_founder = { any_spouse = { tpr_partner_for_eastern_syncretism_trigger = yes has_relation_soulmate = scope:tpr_founder } } } add = 70 }
+	}
+	if = {
+		limit = { this = tenet:tenet_sinitic_syncretism }
+		if = { limit = { scope:tpr_founder = { any_relation = { type = soulmate tpr_partner_for_sinitic_syncretism_trigger = yes } } } add = 150 }
+		if = { limit = { scope:tpr_founder = { any_relation = { type = best_friend tpr_partner_for_sinitic_syncretism_trigger = yes } } } add = 80 }
+		if = { limit = { scope:tpr_founder = { any_relation = { type = lover tpr_partner_for_sinitic_syncretism_trigger = yes } } } add = 60 }
+		if = { limit = { scope:tpr_founder = { any_spouse = { tpr_partner_for_sinitic_syncretism_trigger = yes } } } add = 30 }
+		if = { limit = { scope:tpr_founder = { any_spouse = { tpr_partner_for_sinitic_syncretism_trigger = yes has_relation_soulmate = scope:tpr_founder } } } add = 70 }
+	}
+	if = {
+		limit = { this = tenet:tenet_unreformed_syncretism }
+		if = { limit = { scope:tpr_founder = { any_relation = { type = soulmate tpr_partner_for_unreformed_syncretism_trigger = yes } } } add = 150 }
+		if = { limit = { scope:tpr_founder = { any_relation = { type = best_friend tpr_partner_for_unreformed_syncretism_trigger = yes } } } add = 80 }
+		if = { limit = { scope:tpr_founder = { any_relation = { type = lover tpr_partner_for_unreformed_syncretism_trigger = yes } } } add = 60 }
+		if = { limit = { scope:tpr_founder = { any_spouse = { tpr_partner_for_unreformed_syncretism_trigger = yes } } } add = 30 }
+		if = { limit = { scope:tpr_founder = { any_spouse = { tpr_partner_for_unreformed_syncretism_trigger = yes has_relation_soulmate = scope:tpr_founder } } } add = 70 }
+	}
+}

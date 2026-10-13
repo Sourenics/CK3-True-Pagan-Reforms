@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.1
+
+- Checked against CK3 1.20.1.
+- Fixed: a reformed faith could end up with both Ecclesiarchy (Pentarchy) and Fundamentalist pluralism, a combination the faith editor does not allow. The mod now checks this rule too.
+
 ## 1.2.0
 
 - New: a reformer's bonds with people of another religion can bring that religion's syncretism tenet (Christian, Islamic, Jewish, Dharmic or Sinitic Syncretism, or Syncretic Folk Traditions for another pagan faith) into the reformed faith. Soulmates weigh the most, then best friends, lovers and spouses; a spouse who is also the soulmate weighs even more. Suggested by TurtleShroom.

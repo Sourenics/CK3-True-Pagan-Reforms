@@ -5,7 +5,7 @@
 A Crusader Kings III mod that makes AI pagan reformations less predictable. When an AI ruler reforms a pagan faith, some of the new faith's tenets are swapped for ones that fit the reformer, and some of its doctrines shift in the same direction: a lustful reformer may preach Carnal Exaltation and accept adultery, an eccentric mystic Esotericism and witchcraft, a sadistic warlord Human Sacrifice. Every playthrough gets its own reformed faiths.
 
 - **Game version:** 1.20.x
-- **Mod version:** 1.2.0
+- **Mod version:** 1.2.1
 - **Author:** [Sourenics](https://github.com/Sourenics)
 - **Steam Workshop:** [True Pagan Reforms](https://steamcommunity.com/sharedfiles/filedetails/?id=3817742251)
 
@@ -135,7 +135,7 @@ Please open an [issue](../../issues/new/choose) using the **Bug report** templat
    - **macOS:** `~/Documents/Paradox Interactive/Crusader Kings III/logs/error.log`
 
    The log is overwritten every time the game starts, so copy it right after the problem happens, before launching the game again. Ideally, reproduce the problem in a session with **only True Pagan Reforms enabled**.
-2. **The game version** (shown in the main menu, for example 1.20.0.4) and **the mod version**.
+2. **The game version** (shown in the main menu, for example 1.20.1) and **the mod version**.
 3. **Your active DLCs** and **your full mod list in load order**.
 4. **Which faith** was reformed, by whom, and which tenets and doctrines it ended up with.
 5. **Screenshots** of the faith window, if possible.

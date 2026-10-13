@@ -155,6 +155,10 @@ tpr_rite_follows_editor_rules_trigger = {
 			custom_description = { text = incompatible_tenet_pentarchy_trigger NOT = { rite_has_tenet = tenet_pentarchy } }
 		}
 		trigger_if = {
+			limit = { rite_has_doctrine = doctrine_pluralism_fundamentalist }
+			custom_description = { text = incompatible_tenet_pentarchy_trigger NOT = { rite_has_tenet = tenet_pentarchy } }
+		}
+		trigger_if = {
 			limit = { rite_has_doctrine = doctrine_theocracy_temporal }
 			custom_description = { text = incompatible_doctrine_theocracy_temporal_trigger NOT = { rite_has_doctrine = doctrine_temporal_head } }
 		}

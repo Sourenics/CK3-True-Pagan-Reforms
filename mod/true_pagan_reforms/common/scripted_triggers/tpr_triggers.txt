@@ -63,26 +63,31 @@ tpr_tenet_is_inherited_trigger = {
 }
 
 # Tenet scope (a tenet of scope:tpr_rite). The tenet can be swapped out:
-# - any tenet except syncretism, which only comes from the founder's bonds;
 # - never a tenet this mod just added;
-# - never the last tenet inherited from the old faith, so the reform keeps its kinship with it.
+# - with No Kinship (scope:tpr_no_kinship), any other tenet, so all of them are replaced;
+# - otherwise any tenet except syncretism, which only comes from the founder's bonds, and never the last tenet
+#   inherited from the old faith, so the reform keeps its kinship with it.
 tpr_can_remove_tenet_trigger = {
-	NOT = { tpr_is_syncretism_tenet_trigger = yes }
 	NOR = {
 		scope:tpr_added_1 ?= this
 		scope:tpr_added_2 ?= this
-	}
-	# Virtuous deviancy needs Carnal Exaltation.
-	NAND = {
-		this = tenet:tenet_carnal_exaltation
-		scope:tpr_rite = { rite_has_doctrine = doctrine_deviancy_virtuous }
+		scope:tpr_added_3 ?= this
 	}
 	trigger_if = {
-		limit = { tpr_tenet_is_inherited_trigger = yes }
-		scope:tpr_rite = {
-			any_rite_tenet = {
-				count >= 2
-				tpr_tenet_is_inherited_trigger = yes
+		limit = { NOT = { exists = scope:tpr_no_kinship } }
+		NOT = { tpr_is_syncretism_tenet_trigger = yes }
+		# Virtuous deviancy needs Carnal Exaltation.
+		NAND = {
+			this = tenet:tenet_carnal_exaltation
+			scope:tpr_rite = { rite_has_doctrine = doctrine_deviancy_virtuous }
+		}
+		trigger_if = {
+			limit = { tpr_tenet_is_inherited_trigger = yes }
+			scope:tpr_rite = {
+				any_rite_tenet = {
+					count >= 2
+					tpr_tenet_is_inherited_trigger = yes
+				}
 			}
 		}
 	}
@@ -90,8 +95,13 @@ tpr_can_remove_tenet_trigger = {
 
 # Tenet scope. Needs scope:tpr_rite. The tenet can be added to the rite: any tenet the game lets the rite choose
 # (rite_can_choose_tenet checks religion, DLC and character requirements). Syncretism tenets only qualify through a
-# bond of the founder (see tpr_syncretism_triggers.txt). The editor's compatibility rules are checked after adding.
+# bond of the founder (see tpr_syncretism_triggers.txt). With No Kinship, no tenet of the old faith qualifies.
+# The editor's compatibility rules are checked after adding.
 tpr_can_add_tenet_trigger = {
+	trigger_if = {
+		limit = { exists = scope:tpr_no_kinship }
+		NOT = { tpr_tenet_is_inherited_trigger = yes }
+	}
 	OR = {
 		NOT = { tpr_is_syncretism_tenet_trigger = yes }
 		AND = {

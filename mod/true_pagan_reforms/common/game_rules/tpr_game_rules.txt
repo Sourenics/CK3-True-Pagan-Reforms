@@ -10,6 +10,8 @@ tpr_variation = {
 	tpr_variation_moderate = {}
 
 	tpr_variation_strong = {}
+
+	tpr_variation_no_kinship = {}
 }
 
 # How many doctrines of an AI pagan reform move one step toward ones that fit its founder.
@@ -25,4 +27,6 @@ tpr_doctrine_variation = {
 	tpr_doctrine_variation_moderate = {}
 
 	tpr_doctrine_variation_strong = {}
+
+	tpr_doctrine_variation_radical = {}
 }

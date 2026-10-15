@@ -26,7 +26,7 @@ tpr_vary_reformed_faith_effect = {
 
 # Needs scope:tpr_rite and scope:tpr_founder; scope:tpr_old_rite is optional.
 # Makes 1 or 2 tenet swaps, following the tenet game rule (a reformed rite has 3 tenets, so at least 1 always stays),
-# then changes doctrines following the doctrine game rule.
+# or replaces all of them with No Kinship; then changes doctrines following the doctrine game rule.
 tpr_vary_rite_effect = {
 	# Only enforce the editor rules if the rite followed them to begin with, so an odd starting faith never blocks the mod.
 	if = {
@@ -34,6 +34,23 @@ tpr_vary_rite_effect = {
 		save_scope_value_as = { name = tpr_check_rules value = yes }
 	}
 	if = {
+		limit = { has_game_rule = tpr_variation_no_kinship }
+		# Every tenet goes, and none of the old faith's tenets can come back. Each swap takes out a tenet the reform
+		# started with; a swap that finds nothing to add puts its tenet back, so up to 2 extra tries replace it.
+		save_scope_value_as = { name = tpr_no_kinship value = yes }
+		while = {
+			count = 5
+			if = {
+				limit = {
+					scope:tpr_rite = {
+						any_rite_tenet = { tpr_can_remove_tenet_trigger = yes }
+					}
+				}
+				tpr_swap_one_tenet_effect = yes
+			}
+		}
+	}
+	else_if = {
 		limit = { has_game_rule = tpr_variation_strong }
 		tpr_swap_one_tenet_effect = yes
 		tpr_swap_one_tenet_effect = yes
@@ -54,7 +71,7 @@ tpr_vary_rite_effect = {
 }
 
 # Needs scope:tpr_rite and scope:tpr_founder.
-# Moves 0 to 4 doctrines one step, following the doctrine game rule. Each group changes at most once.
+# Moves 0 to 6 doctrines one step, following the doctrine game rule. Each group changes at most once.
 # Then sets up a head of faith title if the faith now needs one.
 tpr_vary_doctrines_effect = {
 	if = {
@@ -69,6 +86,24 @@ tpr_vary_doctrines_effect = {
 		random = {
 			chance = 50
 			tpr_change_one_doctrine_effect = yes
+		}
+	}
+	else_if = {
+		limit = { has_game_rule = tpr_doctrine_variation_radical }
+		# 4, 5 or 6, even odds.
+		tpr_change_one_doctrine_effect = yes
+		tpr_change_one_doctrine_effect = yes
+		tpr_change_one_doctrine_effect = yes
+		tpr_change_one_doctrine_effect = yes
+		random_list = {
+			1 = {}
+			1 = {
+				tpr_change_one_doctrine_effect = yes
+			}
+			1 = {
+				tpr_change_one_doctrine_effect = yes
+				tpr_change_one_doctrine_effect = yes
+			}
 		}
 	}
 	# Moderate, also when the rule did not exist yet in the save.
@@ -93,6 +128,8 @@ tpr_set_up_head_of_faith_effect = {
 				scope:tpr_doctrine_2 ?= { tpr_is_head_of_faith_doctrine_trigger = yes }
 				scope:tpr_doctrine_3 ?= { tpr_is_head_of_faith_doctrine_trigger = yes }
 				scope:tpr_doctrine_4 ?= { tpr_is_head_of_faith_doctrine_trigger = yes }
+				scope:tpr_doctrine_5 ?= { tpr_is_head_of_faith_doctrine_trigger = yes }
+				scope:tpr_doctrine_6 ?= { tpr_is_head_of_faith_doctrine_trigger = yes }
 			}
 		}
 		scope:tpr_rite = { save_scope_as = rite }
@@ -138,8 +175,16 @@ tpr_change_one_doctrine_effect = {
 			limit = { NOT = { exists = scope:tpr_doctrine_3 } }
 			scope:tpr_doctrine_to_add = { save_scope_as = tpr_doctrine_3 }
 		}
-		else = {
+		else_if = {
+			limit = { NOT = { exists = scope:tpr_doctrine_4 } }
 			scope:tpr_doctrine_to_add = { save_scope_as = tpr_doctrine_4 }
+		}
+		else_if = {
+			limit = { NOT = { exists = scope:tpr_doctrine_5 } }
+			scope:tpr_doctrine_to_add = { save_scope_as = tpr_doctrine_5 }
+		}
+		else = {
+			scope:tpr_doctrine_to_add = { save_scope_as = tpr_doctrine_6 }
 		}
 	}
 }
@@ -195,6 +240,7 @@ tpr_try_doctrine_effect = {
 # Needs scope:tpr_rite and scope:tpr_founder; scope:tpr_old_rite is optional.
 # Removes one tenet and adds one that fits the founder. A tenet that breaks the faith editor's rules is taken out
 # again and another is tried, up to 3 times. If nothing can be added, the removed tenet comes back.
+# With No Kinship, Carnal Exaltation can go too: a Virtuous deviancy then moves back to Accepted, as it needs that tenet.
 tpr_swap_one_tenet_effect = {
 	clear_saved_scope = tpr_tenet_to_remove
 	clear_saved_scope = tpr_tenet_to_add
@@ -221,6 +267,15 @@ tpr_swap_one_tenet_effect = {
 	if = {
 		limit = { exists = scope:tpr_tenet_to_remove }
 		scope:tpr_rite = { remove_rite_tenet = scope:tpr_tenet_to_remove }
+		clear_saved_scope = tpr_deviancy_lowered
+		if = {
+			limit = {
+				scope:tpr_tenet_to_remove = tenet:tenet_carnal_exaltation
+				scope:tpr_rite = { rite_has_doctrine = doctrine_deviancy_virtuous }
+			}
+			scope:tpr_rite = { change_rite_doctrine = doctrine:doctrine_deviancy_accepted }
+			save_scope_value_as = { name = tpr_deviancy_lowered value = yes }
+		}
 		while = {
 			count = 3
 			if = {
@@ -238,12 +293,20 @@ tpr_swap_one_tenet_effect = {
 				limit = { NOT = { exists = scope:tpr_added_1 } }
 				scope:tpr_tenet_to_add = { save_scope_as = tpr_added_1 }
 			}
-			else = {
+			else_if = {
+				limit = { NOT = { exists = scope:tpr_added_2 } }
 				scope:tpr_tenet_to_add = { save_scope_as = tpr_added_2 }
+			}
+			else = {
+				scope:tpr_tenet_to_add = { save_scope_as = tpr_added_3 }
 			}
 		}
 		else = {
 			scope:tpr_rite = { add_rite_tenet = scope:tpr_tenet_to_remove }
+			if = {
+				limit = { exists = scope:tpr_deviancy_lowered }
+				scope:tpr_rite = { change_rite_doctrine = doctrine:doctrine_deviancy_virtuous }
+			}
 		}
 	}
 }

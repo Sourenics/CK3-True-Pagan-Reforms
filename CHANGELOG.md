@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.0
+
+- New tenet setting **No Kinship**: all three tenets of the reformed faith are replaced, and none of the old faith's tenets can be kept or come back. Syncretism and Carnal Exaltation can be replaced too; a Virtuous deviancy then moves back to Accepted.
+- New doctrine setting **Radical**: 4, 5 or 6 doctrines (even odds) move one step.
+
 ## 1.2.1
 
 - Checked against CK3 1.20.1.

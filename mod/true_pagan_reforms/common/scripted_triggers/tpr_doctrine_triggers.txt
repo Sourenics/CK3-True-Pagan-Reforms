@@ -335,7 +335,7 @@ tpr_doctrine_is_one_step_trigger = {
 	}
 }
 
-# Doctrine scope. A doctrine of a group this reform already changed (scope:tpr_doctrine_1 to _4).
+# Doctrine scope. A doctrine of a group this reform already changed (scope:tpr_doctrine_1 to _6).
 tpr_doctrine_group_already_changed_trigger = {
 	OR = {
 		AND = {
@@ -345,6 +345,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_monogamy this = doctrine:doctrine_polygamy this = doctrine:doctrine_concubines } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_monogamy this = doctrine:doctrine_polygamy this = doctrine:doctrine_concubines } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_monogamy this = doctrine:doctrine_polygamy this = doctrine:doctrine_concubines } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_monogamy this = doctrine:doctrine_polygamy this = doctrine:doctrine_concubines } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_monogamy this = doctrine:doctrine_polygamy this = doctrine:doctrine_concubines } }
 			}
 		}
 		AND = {
@@ -354,6 +356,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_divorce_disallowed this = doctrine:doctrine_divorce_approval this = doctrine:doctrine_divorce_allowed } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_divorce_disallowed this = doctrine:doctrine_divorce_approval this = doctrine:doctrine_divorce_allowed } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_divorce_disallowed this = doctrine:doctrine_divorce_approval this = doctrine:doctrine_divorce_allowed } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_divorce_disallowed this = doctrine:doctrine_divorce_approval this = doctrine:doctrine_divorce_allowed } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_divorce_disallowed this = doctrine:doctrine_divorce_approval this = doctrine:doctrine_divorce_allowed } }
 			}
 		}
 		AND = {
@@ -363,6 +367,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_bastardry_none this = doctrine:doctrine_bastardry_legitimization this = doctrine:doctrine_bastardry_all } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_bastardry_none this = doctrine:doctrine_bastardry_legitimization this = doctrine:doctrine_bastardry_all } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_bastardry_none this = doctrine:doctrine_bastardry_legitimization this = doctrine:doctrine_bastardry_all } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_bastardry_none this = doctrine:doctrine_bastardry_legitimization this = doctrine:doctrine_bastardry_all } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_bastardry_none this = doctrine:doctrine_bastardry_legitimization this = doctrine:doctrine_bastardry_all } }
 			}
 		}
 		AND = {
@@ -372,6 +378,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_homosexuality_crime this = doctrine:doctrine_homosexuality_shunned this = doctrine:doctrine_homosexuality_accepted } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_homosexuality_crime this = doctrine:doctrine_homosexuality_shunned this = doctrine:doctrine_homosexuality_accepted } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_homosexuality_crime this = doctrine:doctrine_homosexuality_shunned this = doctrine:doctrine_homosexuality_accepted } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_homosexuality_crime this = doctrine:doctrine_homosexuality_shunned this = doctrine:doctrine_homosexuality_accepted } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_homosexuality_crime this = doctrine:doctrine_homosexuality_shunned this = doctrine:doctrine_homosexuality_accepted } }
 			}
 		}
 		AND = {
@@ -381,6 +389,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_deviancy_crime this = doctrine:doctrine_deviancy_shunned this = doctrine:doctrine_deviancy_accepted this = doctrine:doctrine_deviancy_virtuous } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_deviancy_crime this = doctrine:doctrine_deviancy_shunned this = doctrine:doctrine_deviancy_accepted this = doctrine:doctrine_deviancy_virtuous } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_deviancy_crime this = doctrine:doctrine_deviancy_shunned this = doctrine:doctrine_deviancy_accepted this = doctrine:doctrine_deviancy_virtuous } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_deviancy_crime this = doctrine:doctrine_deviancy_shunned this = doctrine:doctrine_deviancy_accepted this = doctrine:doctrine_deviancy_virtuous } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_deviancy_crime this = doctrine:doctrine_deviancy_shunned this = doctrine:doctrine_deviancy_accepted this = doctrine:doctrine_deviancy_virtuous } }
 			}
 		}
 		AND = {
@@ -390,6 +400,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_adultery_men_crime this = doctrine:doctrine_adultery_men_shunned this = doctrine:doctrine_adultery_men_accepted } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_adultery_men_crime this = doctrine:doctrine_adultery_men_shunned this = doctrine:doctrine_adultery_men_accepted } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_adultery_men_crime this = doctrine:doctrine_adultery_men_shunned this = doctrine:doctrine_adultery_men_accepted } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_adultery_men_crime this = doctrine:doctrine_adultery_men_shunned this = doctrine:doctrine_adultery_men_accepted } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_adultery_men_crime this = doctrine:doctrine_adultery_men_shunned this = doctrine:doctrine_adultery_men_accepted } }
 			}
 		}
 		AND = {
@@ -399,6 +411,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_adultery_women_crime this = doctrine:doctrine_adultery_women_shunned this = doctrine:doctrine_adultery_women_accepted } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_adultery_women_crime this = doctrine:doctrine_adultery_women_shunned this = doctrine:doctrine_adultery_women_accepted } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_adultery_women_crime this = doctrine:doctrine_adultery_women_shunned this = doctrine:doctrine_adultery_women_accepted } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_adultery_women_crime this = doctrine:doctrine_adultery_women_shunned this = doctrine:doctrine_adultery_women_accepted } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_adultery_women_crime this = doctrine:doctrine_adultery_women_shunned this = doctrine:doctrine_adultery_women_accepted } }
 			}
 		}
 		AND = {
@@ -408,6 +422,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_kinslaying_any_dynasty_member_crime this = doctrine:doctrine_kinslaying_extended_family_crime this = doctrine:doctrine_kinslaying_close_kin_crime this = doctrine:doctrine_kinslaying_shunned this = doctrine:doctrine_kinslaying_accepted } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_kinslaying_any_dynasty_member_crime this = doctrine:doctrine_kinslaying_extended_family_crime this = doctrine:doctrine_kinslaying_close_kin_crime this = doctrine:doctrine_kinslaying_shunned this = doctrine:doctrine_kinslaying_accepted } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_kinslaying_any_dynasty_member_crime this = doctrine:doctrine_kinslaying_extended_family_crime this = doctrine:doctrine_kinslaying_close_kin_crime this = doctrine:doctrine_kinslaying_shunned this = doctrine:doctrine_kinslaying_accepted } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_kinslaying_any_dynasty_member_crime this = doctrine:doctrine_kinslaying_extended_family_crime this = doctrine:doctrine_kinslaying_close_kin_crime this = doctrine:doctrine_kinslaying_shunned this = doctrine:doctrine_kinslaying_accepted } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_kinslaying_any_dynasty_member_crime this = doctrine:doctrine_kinslaying_extended_family_crime this = doctrine:doctrine_kinslaying_close_kin_crime this = doctrine:doctrine_kinslaying_shunned this = doctrine:doctrine_kinslaying_accepted } }
 			}
 		}
 		AND = {
@@ -417,6 +433,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_witchcraft_crime this = doctrine:doctrine_witchcraft_shunned this = doctrine:doctrine_witchcraft_accepted this = doctrine:doctrine_witchcraft_virtuous } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_witchcraft_crime this = doctrine:doctrine_witchcraft_shunned this = doctrine:doctrine_witchcraft_accepted this = doctrine:doctrine_witchcraft_virtuous } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_witchcraft_crime this = doctrine:doctrine_witchcraft_shunned this = doctrine:doctrine_witchcraft_accepted this = doctrine:doctrine_witchcraft_virtuous } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_witchcraft_crime this = doctrine:doctrine_witchcraft_shunned this = doctrine:doctrine_witchcraft_accepted this = doctrine:doctrine_witchcraft_virtuous } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_witchcraft_crime this = doctrine:doctrine_witchcraft_shunned this = doctrine:doctrine_witchcraft_accepted this = doctrine:doctrine_witchcraft_virtuous } }
 			}
 		}
 		AND = {
@@ -426,6 +444,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_gender_male_dominated this = doctrine:doctrine_gender_equal this = doctrine:doctrine_gender_female_dominated } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_gender_male_dominated this = doctrine:doctrine_gender_equal this = doctrine:doctrine_gender_female_dominated } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_gender_male_dominated this = doctrine:doctrine_gender_equal this = doctrine:doctrine_gender_female_dominated } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_gender_male_dominated this = doctrine:doctrine_gender_equal this = doctrine:doctrine_gender_female_dominated } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_gender_male_dominated this = doctrine:doctrine_gender_equal this = doctrine:doctrine_gender_female_dominated } }
 			}
 		}
 		AND = {
@@ -435,6 +455,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_consanguinity_dynastic this = doctrine:doctrine_consanguinity_restricted this = doctrine:doctrine_consanguinity_cousins this = doctrine:doctrine_consanguinity_aunt_nephew_and_uncle_niece this = doctrine:doctrine_consanguinity_unrestricted } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_consanguinity_dynastic this = doctrine:doctrine_consanguinity_restricted this = doctrine:doctrine_consanguinity_cousins this = doctrine:doctrine_consanguinity_aunt_nephew_and_uncle_niece this = doctrine:doctrine_consanguinity_unrestricted } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_consanguinity_dynastic this = doctrine:doctrine_consanguinity_restricted this = doctrine:doctrine_consanguinity_cousins this = doctrine:doctrine_consanguinity_aunt_nephew_and_uncle_niece this = doctrine:doctrine_consanguinity_unrestricted } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_consanguinity_dynastic this = doctrine:doctrine_consanguinity_restricted this = doctrine:doctrine_consanguinity_cousins this = doctrine:doctrine_consanguinity_aunt_nephew_and_uncle_niece this = doctrine:doctrine_consanguinity_unrestricted } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_consanguinity_dynastic this = doctrine:doctrine_consanguinity_restricted this = doctrine:doctrine_consanguinity_cousins this = doctrine:doctrine_consanguinity_aunt_nephew_and_uncle_niece this = doctrine:doctrine_consanguinity_unrestricted } }
 			}
 		}
 		AND = {
@@ -444,6 +466,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_pluralism_fundamentalist this = doctrine:doctrine_pluralism_righteous this = doctrine:doctrine_pluralism_pluralistic } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_pluralism_fundamentalist this = doctrine:doctrine_pluralism_righteous this = doctrine:doctrine_pluralism_pluralistic } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_pluralism_fundamentalist this = doctrine:doctrine_pluralism_righteous this = doctrine:doctrine_pluralism_pluralistic } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_pluralism_fundamentalist this = doctrine:doctrine_pluralism_righteous this = doctrine:doctrine_pluralism_pluralistic } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_pluralism_fundamentalist this = doctrine:doctrine_pluralism_righteous this = doctrine:doctrine_pluralism_pluralistic } }
 			}
 		}
 		AND = {
@@ -453,6 +477,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_theocracy_temporal this = doctrine:doctrine_theocracy_lay_clergy } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_theocracy_temporal this = doctrine:doctrine_theocracy_lay_clergy } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_theocracy_temporal this = doctrine:doctrine_theocracy_lay_clergy } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_theocracy_temporal this = doctrine:doctrine_theocracy_lay_clergy } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_theocracy_temporal this = doctrine:doctrine_theocracy_lay_clergy } }
 			}
 		}
 		AND = {
@@ -462,6 +488,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_no_head this = doctrine:doctrine_spiritual_head this = doctrine:doctrine_temporal_head } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_no_head this = doctrine:doctrine_spiritual_head this = doctrine:doctrine_temporal_head } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_no_head this = doctrine:doctrine_spiritual_head this = doctrine:doctrine_temporal_head } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_no_head this = doctrine:doctrine_spiritual_head this = doctrine:doctrine_temporal_head } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_no_head this = doctrine:doctrine_spiritual_head this = doctrine:doctrine_temporal_head } }
 			}
 		}
 		AND = {
@@ -471,6 +499,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_clerical_function_taxation this = doctrine:doctrine_clerical_function_alms_and_pacification this = doctrine:doctrine_clerical_function_recruitment } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_clerical_function_taxation this = doctrine:doctrine_clerical_function_alms_and_pacification this = doctrine:doctrine_clerical_function_recruitment } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_clerical_function_taxation this = doctrine:doctrine_clerical_function_alms_and_pacification this = doctrine:doctrine_clerical_function_recruitment } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_clerical_function_taxation this = doctrine:doctrine_clerical_function_alms_and_pacification this = doctrine:doctrine_clerical_function_recruitment } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_clerical_function_taxation this = doctrine:doctrine_clerical_function_alms_and_pacification this = doctrine:doctrine_clerical_function_recruitment } }
 			}
 		}
 		AND = {
@@ -480,6 +510,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_clerical_gender_male_only this = doctrine:doctrine_clerical_gender_either this = doctrine:doctrine_clerical_gender_female_only } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_clerical_gender_male_only this = doctrine:doctrine_clerical_gender_either this = doctrine:doctrine_clerical_gender_female_only } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_clerical_gender_male_only this = doctrine:doctrine_clerical_gender_either this = doctrine:doctrine_clerical_gender_female_only } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_clerical_gender_male_only this = doctrine:doctrine_clerical_gender_either this = doctrine:doctrine_clerical_gender_female_only } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_clerical_gender_male_only this = doctrine:doctrine_clerical_gender_either this = doctrine:doctrine_clerical_gender_female_only } }
 			}
 		}
 		AND = {
@@ -489,6 +521,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_clerical_marriage_allowed this = doctrine:doctrine_clerical_marriage_disallowed } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_clerical_marriage_allowed this = doctrine:doctrine_clerical_marriage_disallowed } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_clerical_marriage_allowed this = doctrine:doctrine_clerical_marriage_disallowed } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_clerical_marriage_allowed this = doctrine:doctrine_clerical_marriage_disallowed } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_clerical_marriage_allowed this = doctrine:doctrine_clerical_marriage_disallowed } }
 			}
 		}
 		AND = {
@@ -498,6 +532,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_clerical_succession_temporal_appointment this = doctrine:doctrine_clerical_succession_spiritual_appointment this = doctrine:doctrine_clerical_succession_temporal_fixed_appointment this = doctrine:doctrine_clerical_succession_spiritual_fixed_appointment } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_clerical_succession_temporal_appointment this = doctrine:doctrine_clerical_succession_spiritual_appointment this = doctrine:doctrine_clerical_succession_temporal_fixed_appointment this = doctrine:doctrine_clerical_succession_spiritual_fixed_appointment } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_clerical_succession_temporal_appointment this = doctrine:doctrine_clerical_succession_spiritual_appointment this = doctrine:doctrine_clerical_succession_temporal_fixed_appointment this = doctrine:doctrine_clerical_succession_spiritual_fixed_appointment } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_clerical_succession_temporal_appointment this = doctrine:doctrine_clerical_succession_spiritual_appointment this = doctrine:doctrine_clerical_succession_temporal_fixed_appointment this = doctrine:doctrine_clerical_succession_spiritual_fixed_appointment } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_clerical_succession_temporal_appointment this = doctrine:doctrine_clerical_succession_spiritual_appointment this = doctrine:doctrine_clerical_succession_temporal_fixed_appointment this = doctrine:doctrine_clerical_succession_spiritual_fixed_appointment } }
 			}
 		}
 		AND = {
@@ -507,6 +543,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_pilgrimage_forbidden this = doctrine:doctrine_pilgrimage_encouraged this = doctrine:doctrine_pilgrimage_local_rites this = doctrine:doctrine_pilgrimage_mandatory this = doctrine:doctrine_pilgrimage_mandatory_hajj } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_pilgrimage_forbidden this = doctrine:doctrine_pilgrimage_encouraged this = doctrine:doctrine_pilgrimage_local_rites this = doctrine:doctrine_pilgrimage_mandatory this = doctrine:doctrine_pilgrimage_mandatory_hajj } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_pilgrimage_forbidden this = doctrine:doctrine_pilgrimage_encouraged this = doctrine:doctrine_pilgrimage_local_rites this = doctrine:doctrine_pilgrimage_mandatory this = doctrine:doctrine_pilgrimage_mandatory_hajj } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_pilgrimage_forbidden this = doctrine:doctrine_pilgrimage_encouraged this = doctrine:doctrine_pilgrimage_local_rites this = doctrine:doctrine_pilgrimage_mandatory this = doctrine:doctrine_pilgrimage_mandatory_hajj } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_pilgrimage_forbidden this = doctrine:doctrine_pilgrimage_encouraged this = doctrine:doctrine_pilgrimage_local_rites this = doctrine:doctrine_pilgrimage_mandatory this = doctrine:doctrine_pilgrimage_mandatory_hajj } }
 			}
 		}
 		AND = {
@@ -516,6 +554,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_funeral_stoic this = doctrine:doctrine_funeral_bewailment this = doctrine:doctrine_funeral_cremation this = doctrine:doctrine_funeral_sky_burial this = doctrine:doctrine_funeral_mummification this = doctrine:doctrine_family_rites } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_funeral_stoic this = doctrine:doctrine_funeral_bewailment this = doctrine:doctrine_funeral_cremation this = doctrine:doctrine_funeral_sky_burial this = doctrine:doctrine_funeral_mummification this = doctrine:doctrine_family_rites } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_funeral_stoic this = doctrine:doctrine_funeral_bewailment this = doctrine:doctrine_funeral_cremation this = doctrine:doctrine_funeral_sky_burial this = doctrine:doctrine_funeral_mummification this = doctrine:doctrine_family_rites } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_funeral_stoic this = doctrine:doctrine_funeral_bewailment this = doctrine:doctrine_funeral_cremation this = doctrine:doctrine_funeral_sky_burial this = doctrine:doctrine_funeral_mummification this = doctrine:doctrine_family_rites } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_funeral_stoic this = doctrine:doctrine_funeral_bewailment this = doctrine:doctrine_funeral_cremation this = doctrine:doctrine_funeral_sky_burial this = doctrine:doctrine_funeral_mummification this = doctrine:doctrine_family_rites } }
 			}
 		}
 		AND = {
@@ -525,6 +565,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_no_anointment this = doctrine:doctrine_anointment_permitted this = doctrine:doctrine_imperial_anointment } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_no_anointment this = doctrine:doctrine_anointment_permitted this = doctrine:doctrine_imperial_anointment } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_no_anointment this = doctrine:doctrine_anointment_permitted this = doctrine:doctrine_imperial_anointment } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_no_anointment this = doctrine:doctrine_anointment_permitted this = doctrine:doctrine_imperial_anointment } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_no_anointment this = doctrine:doctrine_anointment_permitted this = doctrine:doctrine_imperial_anointment } }
 			}
 		}
 		AND = {
@@ -534,6 +576,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_monotheist this = doctrine:doctrine_polytheist } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_monotheist this = doctrine:doctrine_polytheist } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_monotheist this = doctrine:doctrine_polytheist } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_monotheist this = doctrine:doctrine_polytheist } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_monotheist this = doctrine:doctrine_polytheist } }
 			}
 		}
 		AND = {
@@ -543,6 +587,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_monasticism_encouraged this = doctrine:doctrine_monasticism_accepted this = doctrine:doctrine_monasticism_absent this = doctrine:doctrine_monasticism_forbidden } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_monasticism_encouraged this = doctrine:doctrine_monasticism_accepted this = doctrine:doctrine_monasticism_absent this = doctrine:doctrine_monasticism_forbidden } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_monasticism_encouraged this = doctrine:doctrine_monasticism_accepted this = doctrine:doctrine_monasticism_absent this = doctrine:doctrine_monasticism_forbidden } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_monasticism_encouraged this = doctrine:doctrine_monasticism_accepted this = doctrine:doctrine_monasticism_absent this = doctrine:doctrine_monasticism_forbidden } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_monasticism_encouraged this = doctrine:doctrine_monasticism_accepted this = doctrine:doctrine_monasticism_absent this = doctrine:doctrine_monasticism_forbidden } }
 			}
 		}
 		AND = {
@@ -552,6 +598,8 @@ tpr_doctrine_group_already_changed_trigger = {
 				scope:tpr_doctrine_2 ?= { OR = { this = doctrine:doctrine_sacraments_central this = doctrine:doctrine_sacraments_absent } }
 				scope:tpr_doctrine_3 ?= { OR = { this = doctrine:doctrine_sacraments_central this = doctrine:doctrine_sacraments_absent } }
 				scope:tpr_doctrine_4 ?= { OR = { this = doctrine:doctrine_sacraments_central this = doctrine:doctrine_sacraments_absent } }
+				scope:tpr_doctrine_5 ?= { OR = { this = doctrine:doctrine_sacraments_central this = doctrine:doctrine_sacraments_absent } }
+				scope:tpr_doctrine_6 ?= { OR = { this = doctrine:doctrine_sacraments_central this = doctrine:doctrine_sacraments_absent } }
 			}
 		}
 	}

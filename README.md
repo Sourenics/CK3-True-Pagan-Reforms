@@ -5,7 +5,7 @@
 A Crusader Kings III mod that makes AI pagan reformations less predictable. When an AI ruler reforms a pagan faith, some of the new faith's tenets are swapped for ones that fit the reformer, and some of its doctrines shift in the same direction: a lustful reformer may preach Carnal Exaltation and accept adultery, an eccentric mystic Esotericism and witchcraft, a sadistic warlord Human Sacrifice. Every playthrough gets its own reformed faiths.
 
 - **Game version:** 1.20.x
-- **Mod version:** 1.2.1
+- **Mod version:** 1.3.0
 - **Author:** [Sourenics](https://github.com/Sourenics)
 - **Steam Workshop:** [True Pagan Reforms](https://steamcommunity.com/sharedfiles/filedetails/?id=3817742251)
 
@@ -14,12 +14,13 @@ A Crusader Kings III mod that makes AI pagan reformations less predictable. When
 - **Only AI reformations.** When you reform a faith yourself, nothing changes: you keep the tenets and doctrines you picked.
 - **1 or 2 tenets swapped**, depending on the game rule. A reformed faith has three tenets, so at least one always stays.
 - **Kinship with the old faith.** If the reformed faith kept tenets from the unreformed one, at least one of them is always kept.
+- **Or a clean break.** With the **No Kinship** setting, all three tenets are replaced, and none of the old faith's tenets can be kept or come back. Syncretism and Carnal Exaltation can go too; if the faith had Virtuous deviancy, it moves back to Accepted, since it needs Carnal Exaltation.
 - **Shaped by the reformer.** The new tenets are drawn at random, weighted by the reformer's personality traits, lifestyle traits and education. A tenet that fits gets a much higher chance; one that does not fit can still appear, so results stay varied.
 - **A tenet that already fits the reformer is more likely to stay**, and so is one inherited from the old faith.
 - **Every tenet is an option.** Any tenet the game lets the faith choose can be added, and any tenet can be swapped out, except syncretism (which only comes from the reformer's bonds) and the last one inherited from the old faith.
 - **No impossible faiths.** Every new tenet and doctrine passes the game's own checks for the faith (`is_shown` and `can_pick`, including religion and DLC requirements). The faith editor's compatibility rules, which the game only checks while editing a faith, are read from the game files and checked after every change; a change that breaks one is undone and another option is tried. On top of that, the mod keeps violent tenets out of pacifist faiths and Asceticism away from Hedonism and Carnal Exaltation.
 - **Love and friendship across faiths.** If the reformer has a soulmate, best friend, lover or spouse of another religion, that religion's syncretism tenet (Christian, Islamic, Jewish, Dharmic or Sinitic Syncretism, or Syncretic Folk Traditions for another pagan faith) can be one of the new tenets. A soulmate pulls hardest, and a spouse who is also the soulmate even more; a best friend, a lover and a spouse pull less, in that order. Without such a bond, syncretism tenets are never added, and a faith never gets more than one.
-- **Doctrines shift too.** Depending on its own game rule, 0 to 4 doctrines move one step to a neighbouring option (for example, Witchcraft from Shunned to Accepted or to Criminal, never straight from Criminal to Virtuous). Each doctrine changes at most once per reform, and the choice is weighted by the reformer's traits, gender and sexuality.
+- **Doctrines shift too.** Depending on its own game rule, 0 to 6 doctrines move one step to a neighbouring option (for example, Witchcraft from Shunned to Accepted or to Criminal, never straight from Criminal to Virtuous). Each doctrine changes at most once per reform, and the choice is weighted by the reformer's traits, gender and sexuality.
 - **Doctrines that can change:** every doctrine group a faith can pick in the editor except the religion-specific ones: Head of Faith, View on Gender, Religious Attitude, Clerical Tradition, Pilgrimage Attitude, Theism, Clerical Function, Clerical Gender, Clerical Marriage, Clerical Appointment, Funeral, Coronation (with its DLC), Monasticism, Sacraments, Marriage Type, Divorce, Bastardry, Consanguinity and all crime doctrines (Same-Sex Relations, Deviancy, Male and Female Adultery, Kinslaying, Witchcraft). Groups with an order move one step; the others can move to any option the game allows. Special doctrines are never changed.
 - **Head of faith.** It moves one step too (None, Spiritual, Temporal). The title is then handled by the game's own events, the same ones it uses when a rite is edited: a title is created when the requirements (holy sites, piety) are met, otherwise the faith can create it later with the game's decision.
 - **Doctrines and tenets stay compatible**, following the faith editor's rules: for example Adaptability only with Pluralist, Virtuous Deviancy only with Carnal Exaltation, Polyamory only with accepted adultery, and no Theocratic tradition or spiritual appointment with a temporal head of faith.
@@ -92,6 +93,8 @@ Two rules in the game rules screen when starting a new game:
 | Light | 1 | 1 |
 | Moderate (default) | 1 or 2, even odds | 2 |
 | Strong | 2 | 3 or 4, even odds |
+| No Kinship | all 3, none of the old faith's tenets kept | — |
+| Radical | — | 4, 5 or 6, even odds |
 
 In a save started before the doctrine rule existed, doctrines use the Moderate setting.
 
